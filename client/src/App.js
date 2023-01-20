@@ -1,8 +1,9 @@
 import HomePage from './Pages/HomePage/HomePage'
+import TestNavigator from './Components/TestNavigator/TestNavigator';
 function App() {
   return (
     <div className="App">
-      <HomePage/>
+      <TestNavigator/>
     </div>
   );
 }
