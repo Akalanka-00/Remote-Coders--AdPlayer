@@ -1,7 +1,6 @@
 import React from 'react'
-import './HomePage.css'
+import './Header.css'
 
-import IMG1 from '../../Assets/pic1.jpg'
 const Homepage = () => {
   return (
     <section className="cont">
