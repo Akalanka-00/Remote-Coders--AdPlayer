@@ -3,6 +3,9 @@ import React from 'react'
 const TestNavigator = () => {
   return (
     <div className="test">
+         <a href='/homepage' className='homePage'>
+                HomePage
+            </a>
         <h1>With SignUp</h1>
         <div className="row">
             <a href='/customerSignUp' className='customerSignUp'>
