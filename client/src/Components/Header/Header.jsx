@@ -1,7 +1,7 @@
 import React from 'react'
 import './Header.css'
 
-const Homepage = () => {
+const Header = () => {
   return (
     <section className="cont">
       <div className="slides">
@@ -12,4 +12,4 @@ const Homepage = () => {
   )
 }
 
-export default Homepage
+export default Header
