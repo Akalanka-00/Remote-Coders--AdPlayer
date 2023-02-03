@@ -12,11 +12,7 @@ const HomePage = () => {
     <div>
       <NavBar/>
       <Header/>
-      <About/>
-      <Developer/>
-      <Customer/>
-      <Experience/>
-      <Contact/>
+     
     </div>
   )
 }
