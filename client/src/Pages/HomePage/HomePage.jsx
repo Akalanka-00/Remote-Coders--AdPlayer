@@ -12,6 +12,7 @@ const HomePage = () => {
     <div>
       <NavBar/>
       <Header/>
+      <About/>
      
     </div>
   )

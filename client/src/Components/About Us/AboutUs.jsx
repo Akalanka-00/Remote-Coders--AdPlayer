@@ -3,9 +3,11 @@ import './AboutUs.css'
 
 const AboutUs = () => {
   return (
-    <div>
-      AboutUs
-    </div>
+    <section className='about'>
+      <h1 className="title">
+        Connect with adPlayer
+      </h1>
+    </section>
   )
 }
 

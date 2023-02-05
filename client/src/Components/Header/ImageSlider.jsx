@@ -24,7 +24,7 @@ const ImageSlider = () => {
       shouldDisplayButtons: true,
       autoplayDuration: 5000,
       height: "100vh",
-      width: "50vh"
+      width: "100vh"
     }}
     
     >
