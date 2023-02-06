@@ -1,34 +1,85 @@
-import React from 'react'
-import './GameDeveloper.css'
+import { useEffect } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { db } from "../../Services/firebase-config";
 
-const GameDeveloper = () => {
-  return (
-    <div className='game-cont'>
-      
-      <table>
-        <tr>
-          <th>Rank</th>
-          <th>Game Name</th>
-          <th>Game Icon</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
+import PopularGames from "./PopularGames";
+
+import "./GameDeveloper.css";
+import "./DeveloperDetails.css"
+
+import PIC1 from "../../Assets/Slides/pic1.jpg";
+
+const getNotifications = async () =>{
+  db.collection("NotificationCollection").get().then((querySnapshot)=> {
+      querySnapshot.forEach(element => {
+            console.log(element.data())  ;
+      })
+    });
+
+  
+}
+function DeveloperDetails({ data }) {
+  return <div className="developer-detail-container">
+    <div className="developer-title">
+      <h3>{data.title}</h3>
     </div>
-  )
+    <div className="developer-des">
+      <font>{data.description}</font>
+    </div>
+  </div>
 }
 
-export default GameDeveloper
+
+
+
+function GameDeveloper() {
+  const dataList = [
+    { title: "Over 1M+", description: "Game Developers are connected" },
+    { title: "Over 1M+", description: "Game Developers are connected" },
+  ];
+
+  useEffect((()=>{
+    getNotifications();
+}));
+  return (
+    <section className="developer-container">
+      <div className="heading">
+        <div className="title">
+          <h1>Growth your apps with us</h1>
+        </div>
+      </div>
+      <div className="devoloper-content">
+        <Container>
+          <Row>
+            <Col sm={4}>
+              {dataList.map((data,index)=>(
+                <div key={index}>
+                <DeveloperDetails  data={data} />
+              </div>
+              ))}
+            </Col>
+            <Col sm={1}></Col>
+            <Col sm={6}>
+              <div className="developer-picture-container">
+                <img className="developer-picture" src={PIC1}/>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={4}>
+              <PopularGames/>
+            </Col>
+            <Col sm={1}></Col>
+            <Col sm={6}>
+              
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </section>
+  );
+}
+
+export default GameDeveloper;

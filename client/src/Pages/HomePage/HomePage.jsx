@@ -14,7 +14,10 @@ const HomePage = () => {
       <Header/>
       <About/>
       <Developer/>
-     
+     <Customer/>
+     <Experience/>
+     <Contact/>
+
     </div>
   )
 }
