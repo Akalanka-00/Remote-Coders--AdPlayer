@@ -13,6 +13,7 @@ const HomePage = () => {
       <TopNavBar/>
       <Header/>
       <About/>
+      <Developer/>
      
     </div>
   )
