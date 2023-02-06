@@ -5,7 +5,7 @@ import TestNavigator from './Components/TestNavigator/TestNavigator'
 const App = () => {
   return (
     <div>
-      <TestNavigator/>
+      <HomePage/>
     </div>
   )
 }
