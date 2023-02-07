@@ -11,15 +11,7 @@ import "./DeveloperDetails.css"
 
 import PIC1 from "../../Assets/Slides/pic1.jpg";
 
-const getNotifications = async () =>{
-  db.collection("NotificationCollection").get().then((querySnapshot)=> {
-      querySnapshot.forEach(element => {
-            console.log(element.data())  ;
-      })
-    });
 
-  
-}
 function DeveloperDetails({ data }) {
   return <div className="developer-detail-container">
     <div className="developer-title">
@@ -40,9 +32,7 @@ function GameDeveloper() {
     { title: "Over 1M+", description: "Game Developers are connected" },
   ];
 
-  useEffect((()=>{
-    getNotifications();
-}));
+
   return (
     <section className="developer-container">
       <div className="heading">

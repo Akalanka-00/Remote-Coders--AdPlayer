@@ -1,0 +1,9 @@
+.exp-content{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+tr{
+    height: 12rem;
+}

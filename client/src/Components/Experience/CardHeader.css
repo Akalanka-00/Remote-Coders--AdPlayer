@@ -1,0 +1,16 @@
+.card-view{
+    width: 100%;
+    color: white;
+}
+
+.card-header{
+background-color: #1A73E8;
+}
+
+.card-body{
+    background-color: #272727;
+}
+
+.card-text{
+    width: 100%;
+}
