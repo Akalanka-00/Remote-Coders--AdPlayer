@@ -7,7 +7,7 @@ import PIC3 from "../../Assets/Slides/pic3.jpg";
 
 function Header() {
   return (
-    <div className="header-container">
+    <div className="header-container" id="home">
       <div className="heading">
         <h1 className="title">Lorem ipsum dolor sit amet.</h1>
         <div className="des">

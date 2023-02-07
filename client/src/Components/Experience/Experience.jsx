@@ -39,7 +39,7 @@ const Experience = () => {
   ];
 
   return (
-    <section className="experience-container">
+    <section className="experience-container" id="experience">
       <div className="exp-content">
         {explist.map((experience, index) => (
           <div key={index}>

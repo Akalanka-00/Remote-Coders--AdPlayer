@@ -42,7 +42,7 @@ function Customer() {
   ];
 
   return (
-    <section className="developer-container">
+    <section className="developer-container" id="customer">
       <div className="heading">
         <div className="title">
           <h1>Growth your apps with us</h1>
