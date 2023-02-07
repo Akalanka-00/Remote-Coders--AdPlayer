@@ -23,7 +23,7 @@ const AboutUs = () => {
   ];
   return (
     <section className="about" id="about">
-      <div className="heading">
+      <div className="about-heading">
         <h1 className="title">Connect with adPlayer</h1>
       </div>
 
@@ -42,7 +42,7 @@ function UserCard({user}) {
   return (
     <Card style={{ width: '18rem' }} className="user-card">
       <Card.Img variant="top" src={user.path} />
-      <Card.Body className="content">
+      <Card.Body className="content-about">
         <Card.Title className="content-title">{user.title}</Card.Title>
         <Card.Text>
           {user.description}
