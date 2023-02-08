@@ -42,8 +42,8 @@ function UserCard({user}) {
   return (
     <Card style={{ width: '18rem' }} className="user-card">
       <Card.Img variant="top" src={user.path} />
-      <Card.Body className="content-about">
-        <Card.Title className="content-title">{user.title}</Card.Title>
+      <Card.Body className="user-card-about">
+        <Card.Title className="user-card-title">{user.title}</Card.Title>
         <Card.Text>
           {user.description}
         </Card.Text>

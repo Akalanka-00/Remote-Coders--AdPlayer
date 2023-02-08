@@ -2,10 +2,12 @@
     color: white;
 }
 
-.content-about{
+.user-card-about{
     background-color: #1C1C1C;
+    display: flex;
+    flex-direction: column;
 }
 
-.content-title{
+.user-card .user-card-title{
     font-weight: 700;
 }
