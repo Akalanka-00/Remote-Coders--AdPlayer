@@ -43,7 +43,7 @@ function UserCard({user}) {
     <Card style={{ width: '18rem' }} className="user-card">
       <Card.Img variant="top" src={user.path} />
       <Card.Body className="user-card-about">
-        <Card.Title className="user-card-title">{user.title}</Card.Title>
+        {/* <Card.Title className="user-card-title">{user.title}</Card.Title> */}
         <Card.Text>
           {user.description}
         </Card.Text>
