@@ -1,0 +1,45 @@
+.social-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.social-title,
+.social-item {
+  padding-right: 1rem;
+  direction: none;
+  color: white;
+}
+
+.footer .row {
+  padding: 2rem 0 2rem 0;
+  border-bottom: 1px solid white;
+}
+
+
+
+.footer-title {
+  padding-bottom: 1rem;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.footer-item {
+margin-left: 1rem;
+  }
+
+.footer-item a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .footer-card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+  }
+.footer_copyright{
+    text-align: center;
+    padding-bottom: 1rem;
+}
