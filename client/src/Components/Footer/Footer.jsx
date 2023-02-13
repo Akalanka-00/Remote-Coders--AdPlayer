@@ -44,36 +44,34 @@ const Footer = () => {
             <Col sm className="col">
               <div className="footer-title">About AdPlayer</div>
               <div className="footer-item">
-                <a href="#">Overview</a>
+                <a href="#home">Overview</a>
               </div>
               <div className="footer-item">
-                <a href="#">About AdPlayer</a>
+                <a href="#about">About AdPlayer</a>
               </div>
               <div className="footer-item">
-                <a href="#">For Game Devolopers</a>
+                <a href="#devoloper">For Game Devolopers</a>
               </div>
               <div className="footer-item">
-                <a href="#">For Customers</a>
+                <a href="#customer">For Customers</a>
               </div>
               <div className="footer-item">
-                <a href="#">Experiences</a>
+                <a href="#experience">Experiences</a>
               </div>
               <div className="footer-item">
-                <a href="#">Contact</a>
+                <a href="#contact">Contact</a>
               </div>
             </Col>
 
             <Col sm className="col">
               <div className="footer-title">Learning & Support </div>
               <div className="footer-item">
-                <a href="#">You Tube</a>
+                <a href="https://www.youtube.com/">You Tube</a>
               </div>
               <div className="footer-item">
                 <a href="#">Blog</a>
               </div>
-              <div className="footer-item">
-                <a href="#">SDK</a>
-              </div>
+              
               <div className="footer-item">
                 <a href="#">Support</a>
               </div>

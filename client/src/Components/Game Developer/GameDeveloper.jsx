@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { db } from "../../Services/firebase-config";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
+import ListGroup from "react-bootstrap/ListGroup";
 
 import PopularGames from "./PopularGames";
 
@@ -11,12 +12,8 @@ import "./GameDeveloper.css";
 import "./DeveloperDetails.css";
 
 import PIC1 from "../../Assets/Slides/pic1.jpg";
+import { collection, onSnapshot } from "firebase/firestore";
 
-const gameData = [
-  { title: "Game Title 1", path: "./Assets/pic1.jpg" },
-  { title: "Game Title 2", path: "./Assets/pic1.jpg" },
-  { title: "Game Title 3", path: "./Assets/pic1.jpg" },
-];
 function DeveloperDetails({ data }) {
   return (
     <div className="developer-detail-container">
@@ -30,12 +27,31 @@ function DeveloperDetails({ data }) {
   );
 }
 
-function GameDeveloper() {
+const GameDeveloper = () => {
+  const [gameDetails, setGameDetails] = useState([]);
+
+  const gameDataCollectionRef = collection(db, "GamesCollection");
+
+  useEffect(() => {
+    onSnapshot(gameDataCollectionRef, (snapshot) => {
+      setGameDetails(
+        snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            viewng: false,
+            ...doc.data(),
+          };
+        })
+      );
+    });
+  }, []);
+
   const dataList = [
     { title: "Over 1M+", description: "Game Developers are connected" },
     { title: "Over 1M+", description: "Game Developers are connected" },
   ];
 
+  const numAscending = [...gameDetails].sort((a, b) => a.Rank - b.Rank);
   return (
     <section className="developer-container" id="devoloper">
       <div className="heading">
@@ -62,17 +78,54 @@ function GameDeveloper() {
           </Row>
           <Row>
             <Col sm={4}>
-              <PopularGames gameDataList={gameData}/>
+              <div className="pop-title">
+                Most Popular Games
+              </div>
+              <ListGroup as="ol" numbered>
+                {numAscending.map(
+                  (gameData, i) => (
+                    console.log(gameData),
+                    (
+                      <div key={gameData.rank}>
+                        {i < 3 ? (
+                          <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                          >
+                            <div className="ms-2 me-auto">
+                              <div className="fw-bold">{gameData.Rank}</div>
+                              {gameData.Name}
+                            </div>
+                            <img
+                              className="pop-img"
+                              rounded
+                              src={gameData.thumb}
+                            />
+                          </ListGroup.Item>
+                        ) : (
+                          <div></div>
+                        )}
+                      </div>
+                    )
+                  )
+                )}
+              </ListGroup>
             </Col>
             <Col sm={6}></Col>
             <Col sm={2}>
-            <Button href="GameDeveloperSignUp" className="getStartedBtn" variant="primary">Get Started</Button>
+              <Button
+                href="GameDeveloperSignUp"
+                className="getStartedBtn"
+                variant="primary"
+              >
+                Get Started
+              </Button>
             </Col>
           </Row>
         </Container>
       </div>
     </section>
   );
-}
+};
 
 export default GameDeveloper;
