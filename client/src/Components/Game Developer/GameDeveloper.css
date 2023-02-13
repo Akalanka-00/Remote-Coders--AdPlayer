@@ -9,3 +9,11 @@
 .developer-picture{
     width: 40rem;
 }
+
+.getStartedBtn{
+    color: white;
+    background-color: blue;
+    margin-top:1rem;
+
+    text-decoration: none;
+}

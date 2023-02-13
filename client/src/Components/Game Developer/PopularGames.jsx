@@ -1,45 +1,24 @@
-import Badge from 'react-bootstrap/Badge';
-import ListGroup from 'react-bootstrap/ListGroup';
+import Badge from "react-bootstrap/Badge";
+import ListGroup from "react-bootstrap/ListGroup";
 
-function PopularGames() {
+import "./PopularGames.css"
+function PopularGames({ gameDataList }) {
   return (
     <ListGroup as="ol" numbered>
-      <ListGroup.Item
-        as="li"
-        className="d-flex justify-content-between align-items-start"
-      >
-        <div className="ms-2 me-auto">
-          <div className="fw-bold">Subheading</div>
-          Cras justo odio
+      {gameDataList.map((gameData, index) => (
+         
+        <div key={index}>
+          <ListGroup.Item
+            as="li"
+            className="d-flex justify-content-between align-items-start"
+          >
+            <div className="ms-2 me-auto">
+              <div className="fw-bold">{gameData.title}</div>
+            </div>
+            <img className="pop-img" src={gameData.path} />
+          </ListGroup.Item>
         </div>
-        <Badge bg="primary" pill>
-          14
-        </Badge>
-      </ListGroup.Item>
-      <ListGroup.Item
-        as="li"
-        className="d-flex justify-content-between align-items-start"
-      >
-        <div className="ms-2 me-auto">
-          <div className="fw-bold">Subheading</div>
-          Cras justo odio
-        </div>
-        <Badge bg="primary" pill>
-          14
-        </Badge>
-      </ListGroup.Item>
-      <ListGroup.Item
-        as="li"
-        className="d-flex justify-content-between align-items-start"
-      >
-        <div className="ms-2 me-auto">
-          <div className="fw-bold">Subheading</div>
-          Cras justo odio
-        </div>
-        <Badge bg="primary" pill>
-          14
-        </Badge>
-      </ListGroup.Item>
+      ))}
     </ListGroup>
   );
 }

@@ -3,35 +3,38 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { db } from "../../Services/firebase-config";
+import Button from 'react-bootstrap/Button';
 
 import PopularGames from "./PopularGames";
 
 import "./GameDeveloper.css";
-import "./DeveloperDetails.css"
+import "./DeveloperDetails.css";
 
 import PIC1 from "../../Assets/Slides/pic1.jpg";
 
-
+const gameData = [
+  { title: "Game Title 1", path: "./Assets/pic1.jpg" },
+  { title: "Game Title 2", path: "./Assets/pic1.jpg" },
+  { title: "Game Title 3", path: "./Assets/pic1.jpg" },
+];
 function DeveloperDetails({ data }) {
-  return <div className="developer-detail-container">
-    <div className="developer-title">
-      <h3>{data.title}</h3>
+  return (
+    <div className="developer-detail-container">
+      <div className="developer-title">
+        <h3>{data.title}</h3>
+      </div>
+      <div className="developer-des">
+        <font>{data.description}</font>
+      </div>
     </div>
-    <div className="developer-des">
-      <font>{data.description}</font>
-    </div>
-  </div>
+  );
 }
-
-
-
 
 function GameDeveloper() {
   const dataList = [
     { title: "Over 1M+", description: "Game Developers are connected" },
     { title: "Over 1M+", description: "Game Developers are connected" },
   ];
-
 
   return (
     <section className="developer-container" id="devoloper">
@@ -44,26 +47,26 @@ function GameDeveloper() {
         <Container>
           <Row>
             <Col sm={4}>
-              {dataList.map((data,index)=>(
+              {dataList.map((data, index) => (
                 <div key={index}>
-                <DeveloperDetails  data={data} />
-              </div>
+                  <DeveloperDetails data={data} />
+                </div>
               ))}
             </Col>
             <Col sm={1}></Col>
             <Col sm={6}>
               <div className="developer-picture-container">
-                <img className="developer-picture" src={PIC1}/>
+                <img className="developer-picture" src={PIC1} />
               </div>
             </Col>
           </Row>
           <Row>
             <Col sm={4}>
-              <PopularGames/>
+              <PopularGames gameDataList={gameData}/>
             </Col>
-            <Col sm={1}></Col>
-            <Col sm={6}>
-              
+            <Col sm={6}></Col>
+            <Col sm={2}>
+            <Button href="GameDeveloperSignUp" className="getStartedBtn" variant="primary">Get Started</Button>
             </Col>
           </Row>
         </Container>
