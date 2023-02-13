@@ -1,0 +1,35 @@
+.contact-heading {
+  text-align: center;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 41px;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #111;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.card-holder {
+  width: 40%;
+  background-color: #121212;
+  margin: 1rem;
+  border: 3px solid #1a73e8;
+}
+.contact-card {
+  background-color: #1a73e8;
+  text-align: center;
+}
+
+.card-body {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.contact-icon {
+  align-content: center;
+}

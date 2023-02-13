@@ -1,0 +1,13 @@
+.user-card{
+    color: white;
+}
+
+.user-card-about{
+    background-color: #1C1C1C;
+
+}
+
+
+.user-card .user-card-title{
+    font-weight: 700;
+}

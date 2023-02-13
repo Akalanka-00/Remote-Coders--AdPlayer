@@ -1,0 +1,36 @@
+.header-container {
+  background-image: url("../../Assets/homebg.jpg"); 
+  height: 100vh;
+}
+
+.header-container .heading{
+    padding-top: 2rem;
+    margin-left: 2rem;
+}
+
+.header-container .heading .title{
+font-style: normal;
+font-weight: 700;
+font-size: 28px;
+
+}
+.header-container .heading .des{
+    margin-top: 3rem;
+    margin-left: 4rem;
+    width: 50%;
+    display: flex;
+    align-content: center;
+
+}
+
+.carousel-card{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.Carousel {
+  margin-top: 3rem;
+  width: 60%;
+  height: 60%;
+}

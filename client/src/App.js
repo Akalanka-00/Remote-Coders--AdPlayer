@@ -1,11 +1,13 @@
+import React from 'react'
 import HomePage from './Pages/HomePage/HomePage'
-import TestNavigator from './Components/TestNavigator/TestNavigator';
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <TestNavigator/>
+    <div>
+      <HomePage/>
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,10 @@
+body{
+    background-color: #111111;
+    color: white;
+}
+
+section{
+    margin: 3rem 5rem 0 5rem;
+    height: 100vh;
+    border-bottom: 1px solid white;
+}
