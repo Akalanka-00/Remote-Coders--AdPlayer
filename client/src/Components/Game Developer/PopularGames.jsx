@@ -5,17 +5,17 @@ import "./PopularGames.css"
 function PopularGames({ gameDataList }) {
   return (
     <ListGroup as="ol" numbered>
-      {gameDataList.map((gameData, index) => (
+      {gameDataList.map((gameData, i) => (
          
-        <div key={index}>
+        <div key={gameData.id}>
           <ListGroup.Item
             as="li"
             className="d-flex justify-content-between align-items-start"
           >
             <div className="ms-2 me-auto">
-              <div className="fw-bold">{gameData.title}</div>
+              <div className="fw-bold">{gameData.Name}</div>
             </div>
-            <img className="pop-img" src={gameData.path} />
+            <img className="pop-img" src="" />
           </ListGroup.Item>
         </div>
       ))}

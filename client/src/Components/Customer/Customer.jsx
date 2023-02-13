@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+
 import { db } from "../../Services/firebase-config";
 
 
@@ -35,9 +37,9 @@ function CustomerDetails({ data }) {
 
 function Customer() {
   const dataList = [
-    { title: "Over 1M+", description: "Game Developers are connected" },
-    { title: "Over 1M+", description: "Game Developers are connected" },
-    { title: "Over 1M+", description: "Game Developers are connected" },
+    { title: "Over 1M+", description: "Customers are Connected" },
+    { title: "Over 10M+", description: "Ads are Published" },
+    { title: "Over 5M+", description: "Ads are Active" },
 
   ];
 
@@ -57,7 +59,9 @@ function Customer() {
                 <img className="customer-picture" src={PIC1}/>
               </div>
             </Col>
-            <Col sm={1}></Col>
+            <Col sm={1}>
+            
+            </Col>
             <Col sm={4}>
               {dataList.map((data,index)=>(
                 <div key={index}>
@@ -72,8 +76,14 @@ function Customer() {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea facilis distinctio tenetur dolor praesentium porro dolorem, magni earum fuga labore.
               </p>
             </Col>
-            <Col sm={1}></Col>
-            <Col sm={6}>
+            <Col sm={2}><Button
+                href="CustomerSignUp"
+                className="getStartedBtn"
+                variant="primary"
+              >
+                Get Started
+              </Button></Col>
+            <Col sm={5}>
               
             </Col>
           </Row>
