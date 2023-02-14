@@ -15,10 +15,10 @@ const firebaseConfig = {
   storageBucket: "remote-coders-test.appspot.com",
   messagingSenderId: "788334770070",
   appId: "1:788334770070:web:cd4c5a48d7b6e9ed3b4fb7",
-  measurementId: "G-8LE9PS4QJ3"
+  measurementId: "G-8LE9PS4QJ3",
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const db = getFirestore(app)
-export{ db }
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+export { db };

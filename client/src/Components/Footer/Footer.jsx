@@ -71,7 +71,7 @@ const Footer = () => {
               <div className="footer-item">
                 <a href="#">Blog</a>
               </div>
-              
+
               <div className="footer-item">
                 <a href="#">Support</a>
               </div>
@@ -159,8 +159,8 @@ const Footer = () => {
           </Row>
 
           <div className="footer_copyright">
-        <small>&copy; Akalanka. All right reserved</small>
-      </div>
+            <small>&copy; Akalanka. All right reserved</small>
+          </div>
         </Container>
       </div>
     </footer>

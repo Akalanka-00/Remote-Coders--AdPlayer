@@ -6,41 +6,38 @@ import Button from "react-bootstrap/Button";
 
 import { db } from "../../Services/firebase-config";
 
-
 import "./Customer.css";
-import "./CustomerDetails.css"
+import "./CustomerDetails.css";
 
 import PIC1 from "../../Assets/Slides/pic1.jpg";
 
-const getNotifications = async () =>{
-  db.collection("NotificationCollection").get().then((querySnapshot)=> {
-      querySnapshot.forEach(element => {
-            console.log(element.data())  ;
-      })
+const getNotifications = async () => {
+  db.collection("NotificationCollection")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((element) => {
+        console.log(element.data());
+      });
     });
-
-  
-}
+};
 function CustomerDetails({ data }) {
-  return <div className="customer-detail-container">
-    <div className="customer-title">
-      <h3>{data.title}</h3>
+  return (
+    <div className="customer-detail-container">
+      <div className="customer-title">
+        <h3>{data.title}</h3>
+      </div>
+      <div className="customer-des">
+        <font>{data.description}</font>
+      </div>
     </div>
-    <div className="customer-des">
-      <font>{data.description}</font>
-    </div>
-  </div>
+  );
 }
-
-
-
 
 function Customer() {
   const dataList = [
     { title: "Over 1M+", description: "Customers are Connected" },
     { title: "Over 10M+", description: "Ads are Published" },
     { title: "Over 5M+", description: "Ads are Active" },
-
   ];
 
   return (
@@ -53,39 +50,38 @@ function Customer() {
       <div className="devoloper-content">
         <Container>
           <Row>
-            
             <Col sm={6}>
               <div className="customer-picture-container">
-                <img className="customer-picture" src={PIC1}/>
+                <img className="customer-picture" src={PIC1} />
               </div>
             </Col>
-            <Col sm={1}>
-            
-            </Col>
+            <Col sm={1}></Col>
             <Col sm={4}>
-              {dataList.map((data,index)=>(
+              {dataList.map((data, index) => (
                 <div key={index}>
-                <CustomerDetails  data={data} />
-              </div>
+                  <CustomerDetails data={data} />
+                </div>
               ))}
             </Col>
           </Row>
           <Row>
             <Col sm={4}>
               <p className="desc-para">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea facilis distinctio tenetur dolor praesentium porro dolorem, magni earum fuga labore.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea
+                facilis distinctio tenetur dolor praesentium porro dolorem,
+                magni earum fuga labore.
               </p>
             </Col>
-            <Col sm={2}><Button
+            <Col sm={2}>
+              <Button
                 href="CustomerSignUp"
                 className="getStartedBtn"
                 variant="primary"
               >
                 Get Started
-              </Button></Col>
-            <Col sm={5}>
-              
+              </Button>
             </Col>
+            <Col sm={5}></Col>
           </Row>
         </Container>
       </div>

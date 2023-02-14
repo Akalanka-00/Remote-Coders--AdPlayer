@@ -78,9 +78,7 @@ const GameDeveloper = () => {
           </Row>
           <Row>
             <Col sm={4}>
-              <div className="pop-title">
-                Most Popular Games
-              </div>
+              <div className="pop-title">Most Popular Games</div>
               <ListGroup as="ol" numbered>
                 {numAscending.map(
                   (gameData, i) => (

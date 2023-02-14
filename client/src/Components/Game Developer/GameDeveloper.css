@@ -1,22 +1,22 @@
-.devoloper-content{
-    margin-top: 5rem;
+.devoloper-content {
+  margin-top: 5rem;
 }
 
-.developer-picture-container{
-    padding: 1rem 2rem 0 2rem;
+.developer-picture-container {
+  padding: 1rem 2rem 0 2rem;
 }
 
-.developer-picture{
-    width: 40rem;
+.developer-picture {
+  width: 40rem;
 }
 
-.getStartedBtn{
-    color: white;
-    background-color: blue;
-    margin-top:1rem;
+.getStartedBtn {
+  color: white;
+  background-color: blue;
+  margin-top: 1rem;
 
-    text-decoration: none;
+  text-decoration: none;
 }
-.pop-title{
-    font-weight: 700;
+.pop-title {
+  font-weight: 700;
 }

@@ -1,12 +1,11 @@
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
 
-import "./PopularGames.css"
+import "./PopularGames.css";
 function PopularGames({ gameDataList }) {
   return (
     <ListGroup as="ol" numbered>
       {gameDataList.map((gameData, i) => (
-         
         <div key={gameData.id}>
           <ListGroup.Item
             as="li"
