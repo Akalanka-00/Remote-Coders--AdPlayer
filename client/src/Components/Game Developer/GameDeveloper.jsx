@@ -33,7 +33,9 @@ const GameDeveloper = () => {
   const gameDataCollectionRef = collection(db, "GamesCollection");
 
   useEffect(() => {
+    console.log("sgs")
     onSnapshot(gameDataCollectionRef, (snapshot) => {
+      
       setGameDetails(
         snapshot.docs.map((doc) => {
           return {
