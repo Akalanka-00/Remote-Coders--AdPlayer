@@ -1,0 +1,105 @@
+.App{
+    background-color: rgb(244, 245, 246);
+}
+.Adformbox{
+background-color:rgb(208, 223, 222);
+padding-top: 1px;
+padding-left: 1px;
+margin-top: 15px;
+margin: 150px;
+border: 2px rgb(19, 183, 178);
+border-radius: 30px;
+height: 1100px;
+width: 800px;
+box-shadow: 4px 4px 4px rgb(179, 211, 222);
+}
+
+.form-group{
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    color:rgb(19, 183, 178);
+    }
+
+input {
+    padding: 5px;
+    width: 70%;
+    border-radius: 10px;
+    color: black;
+    }
+
+select{
+    padding: 6px;
+    width:150px; 
+    border-radius: 10px;
+    }
+.left-align {
+    text-align: left;
+    }
+.right-align{
+    float: right;
+    }
+label{
+    display: block;
+    color: rgb(8, 7, 7);
+   }
+#specific-label {
+   display: inline-block;
+   width: 80%;
+   margin-right: 5px;
+   text-align: right;
+   line-height: 1.5em; /* adjust as per the height of the checkbox */
+}      
+.sub{
+    padding-right: 1000 px;
+}
+.textbox{
+    color: aliceblue;
+    background-color:rgb(19, 183, 178);
+    border-radius: 20px;
+    margin-top: 20px;
+    width: 300px;
+    height: 200px;
+    border: 1px solid rgb(13, 13, 13);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    display: flex;
+  }
+input[type="file"] {
+    margin-top: 20px;
+  }
+
+  input[type="checkbox"] {
+    float: right;
+    width: 10%;
+    vertical-align: top;
+ }
+ input[type="radio"] {
+    float: right;
+    width: 10%;
+    vertical-align: top;
+ }
+ input[type="button"] {
+    float: right;
+    width: 10%;
+    vertical-align: top;
+ }
+.drpdwn{
+    padding: 7px;
+}
+.AdformTitle{
+    margin-top: 1px;
+    height: 80px;
+    background-color: rgb(54, 155, 186);
+    width: 800px;
+    text-align: center;
+    border-radius: 3px;
+    color: rgb(67, 69, 72);
+    }
