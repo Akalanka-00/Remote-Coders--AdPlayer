@@ -4,8 +4,8 @@ import Card from 'react-bootstrap/Card';
 import "./AboutUs.css";
 import './UserCard.css'
 
-import PIC1 from "../../Assets/Slides/pic1.jpg";
-import PIC2 from "../../Assets/Slides/pic2.jpg";
+import PIC1 from "../../../Assets/Slides/pic1.jpg";
+import PIC2 from "../../../Assets/Slides/pic2.jpg";
 
 
 const AboutUs = () => {

@@ -1,20 +1,20 @@
 import React from "react";
-import TopNavBar from "../../Components/NavBar/TopNavBar";
-import Header from "../../Components/Header/Header";
-import About from "../../Components/About Us/AboutUs";
-import Developer from "../../Components/Game Developer/GameDeveloper";
-import Customer from "../../Components/Customer/Customer";
-import Experience from "../../Components/Experience/Experience";
-import Contact from "../../Components/Contact/Contact";
-import Footer from "../../Components/Footer/Footer";
+import AboutUs from "../../Components/Homepage/About Us/AboutUs";
+import Contact from "../../Components/Homepage/Contact/Contact";
+import Customer from "../../Components/Homepage/Customer/Customer";
+import Experience from "../../Components/Homepage/Experience/Experience";
+import Footer from "../../Components/Homepage/Footer/Footer";
+import GameDeveloper from "../../Components/Homepage/Game Developer/GameDeveloper";
+import Header from "../../Components/Homepage/Header/Header";
+import TopNavBar from "../../Components/Homepage/NavBar/TopNavBar";
 
 const HomePage = () => {
   return (
     <div>
       <TopNavBar />
       <Header />
-      <About />
-      <Developer />
+      <AboutUs />
+      <GameDeveloper />
       <Customer />
       <Experience />
       <Contact />

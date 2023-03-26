@@ -1,9 +1,9 @@
 import Carousel from "react-bootstrap/Carousel";
 import "./Header.css";
 
-import PIC1 from "../../Assets/Slides/pic1.jpg";
-import PIC2 from "../../Assets/Slides/pic2.jpg";
-import PIC3 from "../../Assets/Slides/pic3.jpg";
+import PIC1 from "../../../Assets/Slides/pic1.jpg";
+import PIC2 from "../../../Assets/Slides/pic2.jpg";
+import PIC3 from "../../../Assets/Slides/pic3.jpg";
 
 function Header() {
   return (

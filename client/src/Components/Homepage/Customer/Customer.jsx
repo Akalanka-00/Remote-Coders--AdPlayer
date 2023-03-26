@@ -4,12 +4,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-import { db } from "../../Services/firebase-config";
+import { db } from "../../../Services/firebase-config";
 
 import "./Customer.css";
 import "./CustomerDetails.css";
 
-import PIC1 from "../../Assets/Slides/pic1.jpg";
+import PIC1 from "../../../Assets/Slides/pic1.jpg";
 
 const getNotifications = async () => {
   db.collection("NotificationCollection")

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { db } from "../../Services/firebase-config";
+import { db } from "../../../Services/firebase-config";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 
@@ -11,7 +11,7 @@ import PopularGames from "./PopularGames";
 import "./GameDeveloper.css";
 import "./DeveloperDetails.css";
 
-import PIC1 from "../../Assets/Slides/pic1.jpg";
+import PIC1 from "../../../Assets/Slides/pic1.jpg";
 import { collection, onSnapshot } from "firebase/firestore";
 
 function DeveloperDetails({ data }) {
