@@ -11,6 +11,7 @@ import AdminComplain from "./Components/Complains/AdminComplain/AdminComplain";
 import CustomerComplain from "./Components/Complains/CustomerComplain/CustomerComplain";
 import DeveloperComplain from "./Components/Complains/DeveloperComplain/DeveloperComplain";
 import ComplainDashboard from "./Components/Complains/ComplainDashboard/ComplainDashboard";
+import PdfInvoice from "./Components/PdfInvoice/PdfInvoice";
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
             
 
             </Route>
-           
+            <Route path="financial"  element={<PdfInvoice />}/>
             
           </Route>
         </Routes>
