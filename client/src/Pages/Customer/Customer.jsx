@@ -26,7 +26,7 @@ class Customer extends Component {
           <Route path="/Profile" index element={<Profile/>}/>
           <Route path="/Editprofile" index element={<Editprofile/>}/>
           <Route path="/GameDetail" index element={<GameDetail/>}/>
-          <Route path="/Cuspayment" index element={<Cuspayment/>}/>
+          {/* <Route path="/Cuspayment" index element={<Cuspayment/>}/> */}
           <Route path="/ViewAd" index element={<ViewAd/>}/>
           <Route path="/GameDetail" index element={<GameDetail/>}/>
           <Route path="/DragDropFiles" index element={<DragDropFiles/>}/>

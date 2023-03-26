@@ -11,7 +11,7 @@ import Dashboard from '../dashboard/dashboard';
 import Profile from '../profile/profile';
 import CusForm from '../form/Custform';
 import ViewAd from '../adcollection/viewAd';
-import Tables from '../table/table';
+import GameDetail from '../gamedetails/gamedetail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { NavLink} from 'react-router-dom';
 
@@ -37,7 +37,7 @@ export default function ButtonAppBar() {
     { text: 'CusForm', to: '/CusForm', component: <CusForm/> },
     { text: 'ViewAd', to: '/viewad', component: <ViewAd /> },
 
-    { text: 'Tables', to: '/Tables', component: <Tables /> },
+    { text: 'Tables', to: '/GameDetail', component: <GameDetail /> },
   ];
 
   return (

@@ -1,29 +1,22 @@
+import { Card, CardContent, Grid, Select, TextField, FormControlLabel,Checkbox,Button,Typography,MenuItem ,FormControl,InputLabel} from "@material-ui/core";
+import { margin } from "@mui/system";
+import React from "react";
 import { db } from "../../Custfirebase.config"
-import React,{ useState, useEffect} from "react"
+import { useState, useEffect} from "react"
 import { collection, onSnapshot, addDoc,orderBy,query, limit} from "firebase/firestore"
-import './custFormStyle.css'
-import Image from "../../Custimage"
+//import Image from "../../Custimage"
 import { CountryDropdown, RegionDropdown} from "react-country-region-selector"
-import { NavLink } from "react-router-dom"
-import { Button,TextField,Select, MenuItem, FormControl, InputLabel } from "@mui/material"
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import FormGroup from '@mui/material/FormGroup';
-import Checkbox from '@mui/material/Checkbox';
-import Box from '@mui/material/Box';
 
-function CusForm() {
+function CusForm(){
   const [receipes,setreceipes]=useState([]) //because the receipes are in an array
   const [gameDetails, setGames] = useState([])
   const gamesRef = collection(db, "GamesCollection");
   const [form,setForm]=useState({     //display
    Adname:"",   
-   Adtype:"pic",
+   Adtype:"",
    game:"",
-   duration:"tenDays",
-   resolution:"1080*1080",
+   duration:"",
+   resolution:"",
    tgames:false,
    country:"",
    region:"",
@@ -96,28 +89,26 @@ setForm({
 alert("Data sent succecfully")
 }
 
-return(
-<div className="App"> 
-  <div className="Adformbox">
-        <div className="AdformTitle">
-             <h2 style={{textAlign:"center"}}>Publish Your Advertisement</h2>
-        </div>
-  <form onSubmit={handleSubmit}>
-     {/* AdName */}   
-      <div class="form-group left-align" style={{textAlign:"left"}}>
-            <TextField variant="outlined" label="Advertisement Name"  value={form.Adname} onChange={e=> setForm({...form,Adname:e.target.value})}
-            style={{width:"70%"}} />
-      </div>
-{/* Adtype */}
 
-<div className="left-align">
-    <Box sx={{ display: 'flex', marginTop: '40px',marginLeft:"200px", minWidth: 20 }} >
-<FormControl  style={{ width: '55%', textAlign:"left", marginTop:"1px"}}>
+  return(
+    <div className="App">
+<div>
+<Card style={{maxWidth:450,margin:"0 auto",marginTop:"60px",padding:"20px 5px",border:"4px solid #008ac5"}}>
+  <CardContent>
+    <form onSubmit={handleSubmit}>
+    <Grid container spacing={1}>
+      <h3>Advertisem Details</h3>
+<Grid xs={12} sm={12}  item>
+  <TextField label="AdName" placeholder="Enter Ad Name" variant="standard" fullWidth  value={form.Adname} onChange={e=> setForm({...form,Adname:e.target.value})}/>
+</Grid>
+<Grid xs={12} sm={12}  item>
+<FormControl  style={{width: '200px', height: '40px' , textAlign:"left", marginTop:"20px"}}>
       <InputLabel id="adType">Ad Type</InputLabel>
       <Select
         labelId="AdType"
         id="AdType"
         value={form.Adtype}
+        variant="standard" 
         onChange={e => setForm({ ...form, Adtype: e.target.value })}
       >
        {[
@@ -130,16 +121,14 @@ return(
         ))}
       </Select>
     </FormControl>
-    </Box>
-  </div>
-  <div className="left-align">
- {/* Duration */}
-    <Box sx={{ display: 'flex', marginTop: '40px',marginLeft:"200px", minWidth: 20 }} >
-<FormControl  style={{ width: '55%', textAlign:"left", marginTop:"1px"}}>
+</Grid>
+<Grid xs={12} sm={12}  item>
+<FormControl  style={{width: '200px', height: '40px' ,textAlign:"left", marginTop:"20px",marginBottom:"20px"}}>
       <InputLabel id="duration">Duration</InputLabel>
       <Select
         labelId="duration"
         id="duration"
+        variant="standard" 
         value={form.duration}
         onChange={e => setForm({ ...form, duration: e.target.value })}
       >
@@ -155,15 +144,13 @@ return(
         ))}
       </Select>
     </FormControl>
-    </Box>
-    </div>
-    <div className="left-align">
-    <Box sx={{ display: 'flex', marginTop: '40px',marginLeft:"200px", minWidth: 20 }} >
-<FormControl  style={{ width: '55%', textAlign:"left", marginTop:"1px"}}>
+<Grid xs={12} sm={12}  item>
+<FormControl  style={{width: '200px', height: '40px', marginTop: "10px", textAlign: 'left',marginRight:"30px"}}>
       <InputLabel id="res">Resolution</InputLabel>
       <Select
         labelId="res"
         id="res"
+        variant="standard" 
         value={form.resolution}
         onChange={e => setForm({ ...form,resolution: e.target.value })}
       >
@@ -179,17 +166,15 @@ return(
         ))}
       </Select>
     </FormControl>
-    </Box>
-    
-</div>
-  {/* Game */}
-      <div className='left-align'>
-          <Box sx={{ display: 'flex', marginTop: '40px', marginLeft: '200px', minWidth: 20 }}>
-            <FormControl style={{ width: '50%', textAlign: 'left', marginTop: '1px' }}>
+</Grid>
+</Grid>
+<Grid xs={12} sm={6}  item>
+<FormControl style={{ width: '100%', textAlign: 'left', marginTop: '20px' }}>
               <InputLabel id="game">Game</InputLabel>
               <Select
                 labelId="game"
                 id="game"
+                variant="standard" 
                 value={form.game}
                 onChange={(e) => setForm({ ...form, game: e.target.value })}
                 renderValue={(selected) => selected === '' ? 'Select A Game' : selected}
@@ -212,80 +197,41 @@ return(
                 }
               </Select>
             </FormControl>
-          </Box>
+</Grid>
+<Grid xs={12} sm={6}  item>
 
-     </div>
-
-
-    <div className="right-align">
-<FormControl>
-      <FormLabel id="demo-radio-buttons-group-label">View Count</FormLabel>
-      <RadioGroup
-        aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="female"
-        name="radio-buttons-group"
-      >
-        <FormControlLabel value="less_than_100" control={<Radio />} label="Less than 1000" onChange={e=> setForm({...form,viewCount:e.target.value})}/>
-        <FormControlLabel value="100_200" control={<Radio />} label="1000-2000" onChange={e=> setForm({...form,viewCount:e.target.value})}/>
-        <FormControlLabel value="more_than_200" control={<Radio />} label="Morethan 2000" onChange={e=> setForm({...form,viewCount:e.target.value})}/>
-      </RadioGroup>
-    </FormControl>
-    
-    </div>
-    
-
-   {/* Resolution */}
-
-
-{/* Trending Games */}
-<div>
-     <FormGroup  className="right-align">
-      <FormControlLabel control={<Checkbox/>} label="Trending Games"checked={form.tgames} 
+  <FormControl style={{ marginTop: '20px',width:'100%',marginTop:"40px",marginLeft:"14px"}}>
+  <FormControlLabel control={<Checkbox size="small" style={{ fontSize: 10, padding: 4 }}/>} label="Trending Games"checked={form.tgames} 
      onChange={e => setForm({...form, tgames: !form.tgames})}  />
-     </FormGroup>
-</div>
+  </FormControl>
 
-{/*country and region*/}
-<div className="form-group">
-  <label>Country and Region</label>
-<div className="drpdwn">
-<CountryDropdown
+</Grid>
+<Grid xs={12} sm={12}  item>
+<FormControl >
+<CountryDropdown style={{ width: '200px', textAlign: 'left', marginTop: '20px'}}
         value={form.country}
         onChange={(val) => setCountryAndRegion(val, form.region)}
+        variant="standard" 
       />
-      <RegionDropdown
+      <RegionDropdown style={{ width: '200px', textAlign: 'left', marginTop: '1px' }}
         country={form.country}
         value={form.region}
         onChange={(val) => setCountryAndRegion(form.country, val)}
       />
-</div>
-</div>
- 
-{/*View Count */}
-
-
-
-
-{/* Upload Picture */}
-<div>
-<Image/>
-</div>
-<div style={{ marginTop:"30px",marginLeft:"650px"}}>
-  <Button variant="contained" type="submit" onClick={handleSubmit}>Submit</Button>
-</div>
-
-<div style={{ marginTop:"30px",marginLeft:"650px"}}>
-  <Button  variant="contained"  type="submit"><NavLink to="/Cuspayment">Pay Now</NavLink><br></br></Button>
-</div>
-</form>
-  </div>
-  </div>
-)
+      </FormControl>
+</Grid>
+    </Grid>
+    <Grid style={{marginTop:"30px",marginLeft:"260px"}}>
+    <Button  variant="contained" background-color="#008ac5"  type="submit" onClick={handleSubmit}>Pay Now<br></br></Button>
+    </Grid>
+    </form>
+  </CardContent>
+  
+</Card>
+    </div>
+    </div>
+  )
 
 }
 
-
-
-  
-
-export default CusForm;
+export default CusForm

@@ -1,7 +1,7 @@
 import { db } from "../../Custfirebase.config"
 import { useState } from "react"
 import { collection, doc, updateDoc } from "firebase/firestore"
-import './editProfileStyle.css'
+import './editprofileStyle.css'
 import { TextField } from "@mui/material"
 import {Button} from '@mui/material';
 import Box from '@mui/material/Box';
