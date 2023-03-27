@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
 
-import './App.css';
+import "./App.css";
 import NotificationDashboard from "./Components/Notifications/Notification_dashboard/Notification_dashboard";
 import AdminNotification from "./Components/Notifications/AdminNotification/AdminNotification";
 import CustomerNotification from "./Components/Notifications/CustomerNotification/CustomerNotification";
@@ -11,36 +11,42 @@ import AdminComplain from "./Components/Complains/AdminComplain/AdminComplain";
 import CustomerComplain from "./Components/Complains/CustomerComplain/CustomerComplain";
 import DeveloperComplain from "./Components/Complains/DeveloperComplain/DeveloperComplain";
 import ComplainDashboard from "./Components/Complains/ComplainDashboard/ComplainDashboard";
-import PdfInvoice from "./Components/PdfInvoice/PdfInvoice";
+import Financial from "./Components/Financial/Financial";
 
 function App() {
   return (
     <div className="App">
-     <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<HomePage/>} />
-            <Route path="homepage"  element={<HomePage />}/>
+            <Route index element={<HomePage />} />
+            <Route path="homepage" element={<HomePage />} />
             <Route path="notifications/">
-            <Route index element={<NotificationDashboard/>} />
-            <Route path="admin"  element={<AdminNotification />}/>
-            <Route path="customer"  element={<CustomerNotification />}/>
-            <Route path="developer"  element={<DeveloperNotification />}/>
-            <Route path = "customer/all" exact element = {<NotificationPanel isDev={false}/>}></Route>
-            <Route path = "developer/all" exact element = {<NotificationPanel isDev={false}/>}></Route>
 
+              <Route index element={<NotificationDashboard />} />
+              <Route path="admin" element={<AdminNotification />} />
+              <Route path="customer" element={<CustomerNotification />} />
+              <Route path="developer" element={<DeveloperNotification />} />
+              
+              <Route
+                path="customer/all"
+                exact
+                element={<NotificationPanel isDev={false} />}
+              ></Route>
+              <Route
+                path="developer/all"
+                exact
+                element={<NotificationPanel isDev={false} />}
+              ></Route>
             </Route>
 
             <Route path="complain/">
-            <Route index element={<ComplainDashboard/>} />
-            <Route path="admin"  element={<AdminComplain />}/>
-            <Route path="customer"  element={<CustomerComplain />}/>
-            <Route path="developer"  element={<DeveloperComplain />}/>
-            
-
+              <Route index element={<ComplainDashboard />} />
+              <Route path="admin" element={<AdminComplain />} />
+              <Route path="customer" element={<CustomerComplain />} />
+              <Route path="developer" element={<DeveloperComplain />} />
             </Route>
-            <Route path="financial"  element={<PdfInvoice />}/>
-            
+            <Route path="financial" element={<Financial />} />
           </Route>
         </Routes>
       </BrowserRouter>
