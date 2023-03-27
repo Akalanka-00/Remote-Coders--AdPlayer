@@ -10,6 +10,8 @@ import {
   doc,
   updateDoc,
   WhereFilterOp,
+  query,
+  where,
 } from "firebase/firestore";
 
 import "./Financial.css";
@@ -22,35 +24,31 @@ const Financial = () => {
   const [adUnitInfo, setAdUnitInfo] = useState([]);
   const [filteredData, setFilteredData] = useState([])
 
-  function getData(){
-    const developerInfoRef = collection(db, "DeveloperCollection");
-    const gameInfoRef = collection(db, "GamesCollection");
-    const adUnitInfoRef = collection(db, "AdUnitCollection");
+  const [dev_id, setDev_id] = useState([]);
+  const [dev_game_list, set_dev_game_list] = useState([]);
 
 
-    onSnapshot(developerInfoRef, (snapshot) => {
-      setDeveloperInfo(
-        snapshot.docs.map((doc) => {
-          return {
-            id: doc.id,
-            viewng: false,
-            ...doc.data(),
-          };
-        })
-      );
-    });
+  function getGamesInfo(ad_unit_id){
+    const gameInfoRef = query(collection(db, "GamesCollection"),where("ad_units", "array-contains", ad_unit_id));
 
     onSnapshot(gameInfoRef, (snapshot) => {
       setGameInfo(
         snapshot.docs.map((doc) => {
           return {
             id: doc.id,
+            ad_unit_id:ad_unit_id,
+            name:doc.data().game_name,
             viewng: false,
             ...doc.data(),
           };
         })
       );
     });
+  }
+  function getAdUnitInfo(){
+    const developerInfoRef = collection(db, "DeveloperCollection");
+   
+    const adUnitInfoRef = collection(db, "AdUnitCollection");
 
     onSnapshot(adUnitInfoRef, (snapshot) => {
       setAdUnitInfo(
@@ -58,23 +56,46 @@ const Financial = () => {
           return {
             id: doc.id,
             viewng: false,
-            ...doc.data(),
+            //...doc.data(),
+            revenue: getTotalRevenue(doc.data().no_of_req_ad_daily),
           };
         })
       );
     });
 
+
+
+
+    onSnapshot(developerInfoRef, (snapshot) => {
+      setDeveloperInfo(
+        snapshot.docs.map((doc) => {
+          getGamesInfo(doc.id);
+          //console.log(doc.id)
+          return {
+            id: doc.id,
+            //viewng: false,
+            username: doc.data().fname + " " +doc.data().lname,
+           // ...doc.data(),
+          };
+        })
+      );
+    });
+
+   
+    
+
     return
   }
 
-  function getMax(arr){
-    var max = arr[0];
-    arr.forEach((item)=>{
-      if(item>max)
-      max = item;
+  function getTotalRevenue(arr){
+    var tot =0;
+    const revenueValues = arr.map(activity => activity.revenue);
+    revenueValues.forEach((daily_revenue)=>{
+     
+      tot = tot + daily_revenue;
     })
-
-    return max;
+    //console.log(revenueValues)
+    return tot;
   }
 
   function displayData(){
@@ -88,29 +109,18 @@ const Financial = () => {
     adUnitInfo.forEach((element)=>console.log(element))
   }
   useEffect(()=>{
-    getData();
+    getAdUnitInfo();
    
   }, [])
-
-  function getMaxOfArray(numArray) {
-    return Math.max.apply(null, numArray);
-  }
 
   function sort_adUnits(){
 
     //sort the adunits according to max income 
-   // adUnitInfo
-    //getMax(adUnitInfo)
     return adUnitInfo;
   }
 
   function analizeData(){
-    
-    console.log(sort_adUnits())
-    developerInfo.map((dev)=>{
-      setFilteredData([{ ...filteredData, ad_unit_id:dev.id, username: dev.fname + " " + dev.lname }])
-    })
-    console.log(filteredData)
+
   }
   return (
     <div className="financial-container">

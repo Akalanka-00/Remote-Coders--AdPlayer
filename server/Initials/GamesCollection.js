@@ -1,5 +1,5 @@
 const db = require("../service/initialization")
-const adUnit_id_list=["aC0WMuKKVPA0wGbG7zD9","fbPrboVtH7Xbgniw7Na5","kCIIzL5Q1VrVVGoDoH6k"]
+const adUnit_id_list=["DFhKPk19WT2N2XpnnIkn","m0wMBiIykhv8twW6fL0o","KWgZfn5Es6JXGN7VlHME"]
 
 const data = [{
    game_name:"Test Game",
