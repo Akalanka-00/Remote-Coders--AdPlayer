@@ -1,0 +1,11 @@
+.dropzone{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    width: 160px;
+    border: 4px dashed rgb(117,112,112) ;
+    padding: 20px;
+    margin-top: 20px;
+}

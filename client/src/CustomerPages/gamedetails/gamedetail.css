@@ -1,0 +1,26 @@
+.GameDetailbox{
+    width: 500px;
+    height: fit-content;
+    background-color:rgb(208, 223, 222);
+    box-shadow: 4px 4px 4px rgb(179, 211, 222);
+    margin-left: 50px;
+    display: inline-block;
+    border-radius: 20px;
+    text-align:center;
+    color: rgb(19, 20, 20);
+    border:4px solid rgb(208, 223, 222);
+    }
+    .horizontal-line {
+        border-bottom: 10px solid rgb(185, 168, 168);
+      }
+      .Gametitle{
+        margin-top: 1px;
+        height: 50px;
+        background-color: rgb(54, 155, 186);
+        width: 503px;
+        text-align: center;
+        border-radius: 5px;
+        color: rgb(67, 69, 72);
+      }
+    
+      

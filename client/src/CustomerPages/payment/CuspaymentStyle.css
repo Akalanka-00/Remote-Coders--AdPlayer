@@ -1,0 +1,9 @@
+.creditcards{
+    height: 50px;
+    width: 50px;
+    margin: 3px;
+}
+.formbox{
+    background-color:rgb(208, 223, 222);
+    box-shadow: 4px 4px 4px rgb(179, 211, 222);
+}
