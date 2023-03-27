@@ -10,6 +10,7 @@ import SportsVolleyballIcon from "@mui/icons-material/SportsVolleyball";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import BurstModeIcon from "@mui/icons-material/BurstMode";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
@@ -20,7 +21,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">Admin</span>
+          <span className="logo">Voasiz</span>
         </Link>
       </div>
       <hr />
@@ -87,17 +88,25 @@ const Sidebar = () => {
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
           </li>
+          <p className="title">THEME</p>
+          <li>
+            <DarkModeOutlinedIcon
+              className="icon"
+              onClick={(e) => {
+                e.stopPropagation(); // prevent event bubbling
+                dispatch({ type: "TOGGLE" });
+              }}
+            />
+            <span
+              onClick={(e) => {
+                e.stopPropagation(); // prevent event bubbling
+                dispatch({ type: "TOGGLE" });
+              }}
+            >
+              Dark mode switcher
+            </span>
+          </li>
         </ul>
-      </div>
-      <div className="bottom">
-        <div
-          className="colorOption"
-          onClick={() => dispatch({ type: "LIGHT" })}
-        ></div>
-        <div
-          className="colorOption"
-          onClick={() => dispatch({ type: "DARK" })}
-        ></div>
       </div>
     </div>
   );

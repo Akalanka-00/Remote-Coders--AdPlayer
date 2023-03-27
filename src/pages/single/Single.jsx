@@ -4,6 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
 import List from "../../components/datatable/DatatableProfile";
 import { useState, useEffect } from "react";
+import profile from "../../imgs/profile.jpg"
 import { db } from "../../firebase.config";
 import {
   collection,
@@ -48,24 +49,24 @@ const Single = () => {
             <h1 className="title">Information</h1>
             <div className="item">
               <img
-                src="https://nypost.com/wp-content/uploads/sites/2/2019/04/maithripala-sirisena.jpg?quality=75&strip=all&w=744"
+                src={profile}
                 alt=""
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">siri</h1>
+                <h1 className="itemTitle">Hasitha</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
-                  <span className="itemValue">Siri@gmail.com</span>
+                  <span className="itemValue">hasithasawbhagya@gmail.com</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Phone:</span>
-                  <span className="itemValue">+1 2345 67 89</span>
+                  <span className="itemValue">+0000000</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Address:</span>
                   <span className="itemValue">
-                    Elton St. 234 Garden Yd. NewYork
+                    Yakkala,Sri Lanka
                   </span>
                 </div>
                 <div className="detailItem">
@@ -80,7 +81,7 @@ const Single = () => {
           </div>
         </div>
         <div className="bottom">
-        <h1 className="title">Last Transactions</h1>
+        <h1 className="title">Activities</h1>
           <List/>
         </div>
       </div>

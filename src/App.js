@@ -1,15 +1,13 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-
 import Notification from "./pages/Notification/Notification.jsx";
 import Admin from "./pages/Admin/Admin.jsx";
 import Games from "./pages/Games/Games.jsx";
 import Ads from "./pages/Ads/Ads.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { productInputs, userInputs } from "./formSource";
+import {  userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -35,34 +33,21 @@ function App() {
             <Route path="games">
               <Route index element={<Games />} />
               <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
-              />
             </Route>
             <Route path="Ads">
               <Route index element={<Ads />} />
               <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
-              />
+
             </Route>
             <Route path="Notifications">
               <Route index element={<Notification />} />
               <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
-              />
+\
             </Route>
             <Route path="Single">
               <Route index element={<Single />} />
               <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
-              />
+
             </Route>
           </Route>
         </Routes>
