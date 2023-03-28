@@ -47,11 +47,23 @@ color: black;
     padding: 0;
   }
   .smallbox{
-    height: 160px;
-    width: 250px;
+    height: 180px;
+    width: 290px;
     margin-top: 50px;
     margin-left: 60px;
     margin-right: -50px;
     box-shadow: 2px 4px 10px 1px rgba(201,201,201,47);
     padding: 10px;
+  }
+
+  .heading{
+    font-Family: Arial;
+    font-size: 10px;
+    font-Weight: bold
+  }
+  .headCell{
+    padding: 3px;
+    font-Family:Arial;
+    font-size: 10px;
+    font-Weight:bold
   }
