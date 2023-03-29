@@ -56,7 +56,7 @@ const CustomerComplain = () => {
             </Button>
           </div>
 
-          <form className="form-card" onSubmit={handleSubmit}>s
+          <form className="form-card" onSubmit={handleSubmit}>
             <h1 className="complain-title">Add Complain</h1>
 
             <div className="form-group">

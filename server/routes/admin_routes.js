@@ -1,9 +1,9 @@
 const express = require('express')
-const get_notifications = require('../api_operations/admin_operations/get_notifications')
+const get_daily_developer_data = require('../api_operations/admin_operations/financial_operations/get_daily_developer_data')
 const router = express.Router()
 
-router.get('/get/notifications' ,(req,res,next)=>{
-    get_notifications(req , res)
+router.get('/financial/developer/daily' ,(req,res,next)=>{
+   get_daily_developer_data(req,res);
 })
 
 

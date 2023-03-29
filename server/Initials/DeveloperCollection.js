@@ -15,7 +15,7 @@ const data = [{
     email:"test@mail.com",
     password:"123",
     profile:"https://firebasestorage.googleapis.com/v0/b/remotecoders-2140a.appspot.com/o/profile_picture.png?alt=media&token=44fc6e54-e257-4c4d-8087-f541e3f9e411",
-    games:[],
+    games:["dVBSfUtUfN6IbPrroVQM"],
     bank_data_id:"",
 },
 {
@@ -24,7 +24,7 @@ const data = [{
     email:"test@mail.com",
     password:"123",
     profile:"https://firebasestorage.googleapis.com/v0/b/remotecoders-2140a.appspot.com/o/profile_picture.png?alt=media&token=44fc6e54-e257-4c4d-8087-f541e3f9e411",
-    games:[],
+    games:["DqIdJjq29OGXnzul7jxf"],
     bank_data_id:"",
 },
 
