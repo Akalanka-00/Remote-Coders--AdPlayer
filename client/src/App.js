@@ -12,6 +12,8 @@ import CustomerComplain from "./Components/Complains/CustomerComplain/CustomerCo
 import DeveloperComplain from "./Components/Complains/DeveloperComplain/DeveloperComplain";
 import ComplainDashboard from "./Components/Complains/ComplainDashboard/ComplainDashboard";
 import Financial from "./Components/Financial/Financial";
+import NotificationHandler from "./Components/Notification_Handler/NotificationHandler";
+import NotificationViewer from "./Components/Notification_Handler/Notification_viewer/NotificationViewer";
 
 function App() {
   return (
@@ -47,6 +49,9 @@ function App() {
               <Route path="developer" element={<DeveloperComplain />} />
             </Route>
             <Route path="financial" element={<Financial />} />
+            <Route path="notification" element={<NotificationHandler />} />
+            <Route path="notification/new" element={<NotificationViewer />} />
+
           </Route>
         </Routes>
       </BrowserRouter>

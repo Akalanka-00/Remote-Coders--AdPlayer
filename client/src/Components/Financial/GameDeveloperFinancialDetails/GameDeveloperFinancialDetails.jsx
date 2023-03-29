@@ -1,18 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-
-import { db } from "../../../Services/firebase-config";
-import {
-  collection,
-  onSnapshot,
-  doc,
-  updateDoc,
-  WhereFilterOp,
-  query,
-  where,
-} from "firebase/firestore";
 import baseUrl from "../../../Apis/baseUrl";
 
+import "./GameDeveloperFinancialDetails.css"
 const GameDeveloperFinancialDetails = () => {
   const [tableData, setTableData] = useState([]);
   const table_headings = [
@@ -21,6 +11,7 @@ const GameDeveloperFinancialDetails = () => {
     "user ID",
     "Email",
     "No. of Games",
+    "Daily Revenue",
     "Ad view Count - Last 30 days",
     "Ad view Count - Last 12 Months",
   ];
@@ -43,16 +34,17 @@ const GameDeveloperFinancialDetails = () => {
         <thead>
           <tr>
             {table_headings.map((title, index) => (
-              <th key={index}>{title}</th>
+              <th key={index}>{title}</th> // Define Table Headings
             ))}
           </tr>
           {tableData.map((data, i) => {
            return ( <tr key={i}>
-              <td>{data.developer_name}</td>
+              <td><img src= {data.developer_profile}/></td>
               <td>{data.developer_name}</td>
               <td>{data.developer_id}</td>
               <td>{data.developer_mail}</td>
               <td>{data.no_of_games}</td>
+              <td>{data.daily_revenue.toFixed(2)} $</td>
               <td>{data.daily_game_view_count}</td>
               <td>{data.monthly_game_view_count}</td>
 

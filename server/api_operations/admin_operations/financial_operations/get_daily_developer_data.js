@@ -1,4 +1,5 @@
 const db = require("../../../service/initialization");
+const get_daily_revenue = require("./get_daily_revenue");
 
 function calculate_total_ad_unit_revenue(arr){
     tot = 0;
@@ -79,6 +80,16 @@ module.exports =  async function get_daily_developer_data(req, res){
           total_monthly_req:calculate_total_ad_unit_revenue(doc.data().no_of_req_ad_monthly),
       }));
 
+      const ad_unit_type_list_snapshot = await db
+      .collection("AdTypeCollection")
+      .orderBy("ad_type")
+      .get();
+  
+      const ad_unit_type_list = ad_unit_type_list_snapshot.docs.map((doc)=>({
+          id: doc.id, 
+          ...doc.data(),
+      }));
+
       dev_list.map((dev)=>{
         //console.log(dev)
         if(dev.games.length!=0){
@@ -86,7 +97,7 @@ module.exports =  async function get_daily_developer_data(req, res){
             const monthly_game_view_count = get_game_view_count(dev.games,game_list,ad_unit_list, false);
 
             const no_of_games = game_list.length;
-            console.log(no_of_games);
+            //console.log(no_of_games);
             const result_item = {
                 developer_profile:dev.profile,
                 developer_name: dev.username,
@@ -94,7 +105,8 @@ module.exports =  async function get_daily_developer_data(req, res){
                 developer_mail: dev.email,
                 no_of_games: game_list.length,
                 daily_game_view_count:daily_game_view_count,
-                monthly_game_view_count:monthly_game_view_count
+                monthly_game_view_count:monthly_game_view_count,
+                daily_revenue:get_daily_revenue(dev.games, game_list,ad_unit_list,ad_unit_type_list),
             }
 
             result.push(result_item);

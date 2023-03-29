@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 var path = require("path");
 
 const admin_routes = require('./routes/admin_routes')
+const service_routes = require('./routes/service_routes')
 
 
 dotenv.config(); //dotenv configuration
@@ -15,6 +16,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //Add routings
 app.use('/api/admin', admin_routes);
+app.use('/api/service', service_routes);
+
 
 
 app.get("/", (req, res) => {

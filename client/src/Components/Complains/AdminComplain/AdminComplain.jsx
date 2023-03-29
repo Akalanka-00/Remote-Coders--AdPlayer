@@ -31,12 +31,9 @@ const AdminComplain = () => {
     user_Id: "CUS-0001",
     user_Type: "Cus",
   });
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
   
   function handleShow(element) {
-    setShow(true);
     markReviewedComplain(element);
   }
 
