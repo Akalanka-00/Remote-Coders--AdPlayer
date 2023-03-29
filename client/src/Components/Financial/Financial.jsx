@@ -24,27 +24,15 @@ const Financial = () => {
   return (
     <div className="financial-container">
       <Accordion defaultActiveKey="0" flush>
+        
         <Accordion.Item eventKey="0">
           <Accordion.Header>Game Developer Financial Details</Accordion.Header>
+
           <Accordion.Body>
-            <Tabs
-              defaultActiveKey="profile"
-              id="earning-tabs"
-              className="mb-3"
-              fill
-            >
-              <Tab eventKey="daily" title="Daily">
-                <GameDeveloperFinancialDetails />
-              </Tab>
-              <Tab eventKey="monthly" title="Monthly">
-                {/* <Sonnet /> */}
-              </Tab>
-              <Tab eventKey="yearly" title="Yearly">
-                {/* <Sonnet /> */}
-              </Tab>
-            </Tabs>
+          <GameDeveloperFinancialDetails />
           </Accordion.Body>
         </Accordion.Item>
+
         <Accordion.Item eventKey="1">
           <Accordion.Header>Payments</Accordion.Header>
           <Accordion.Body></Accordion.Body>
