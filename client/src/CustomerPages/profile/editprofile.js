@@ -269,27 +269,31 @@ const countries = [
 
 
 function Editprofile() {
+
+
   const [editP, setEditP] = useState({
-    FirstName: "",
-    LastName: "",
-    EmailAddress: "",
+    fName: "",
+    lName: "",
+    email: "",
     ContactNumber: "",
-    
+    Country:""
   })
 
   const receipesCollectionRef = collection(db, "customerCreateAccount")
-  const docRef = doc(receipesCollectionRef, "J7fvkkKWPfEzMA76FvQQ") // replace "DOCUMENT_ID" with the ID of the document you want to update
+  const docRef = doc(receipesCollectionRef, "jczQQJr7DgCRv8J6T9EB") // replace "DOCUMENT_ID" with the ID of the document you want to update
 
   const handleSubmit = async e => {
     e.preventDefault()
 
     if (
-      !editP.FirstName ||
-      !editP.LastName ||
-      !editP.EmailAddress ||
-      !editP.ContactNumber
+      !editP.fName ||
+      !editP.lName ||
+      !editP.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)||
+      !editP.ContactNumber.match(/^\d{10}$/)||
+      !editP.Country
+    
     ) {
-      alert("Please fill out all fields")
+      alert("Please re Check your entered data")
       return
     }
 
@@ -302,10 +306,11 @@ function Editprofile() {
     }
 
     setEditP({
-      FirstName: "",
-      LastName: "",
-      EmailAddress: "",
-      ContactNumber: "",
+      fName: "",
+      lName: "",
+      email: "",
+     ContactNumber:"",
+     Country:""
     })
   }
 return(
@@ -328,20 +333,20 @@ return(
 
 
   <div class="editproform-group" style={{paddingTop:"20px"}}>
-  <TextField variant="outlined" label="First Name" value={editP.FirstName} onChange={e => setEditP({...editP,FirstName:e.target.value})}
+  <TextField variant="outlined" label="First Name" value={editP.fName} onChange={e => setEditP({...editP,fName:e.target.value})}
   style={{width:"50%"}} />
 </div>
 
 <div className="editproform-group" style={{textAlign:"center"}}>
 
-<TextField variant="outlined" label="Last Name" value={editP.LastName} onChange={ e=> setEditP({...editP,LastName:e.target.value})}
+<TextField variant="outlined" label="Last Name" value={editP.lName} onChange={ e=> setEditP({...editP,lName:e.target.value})}
  style={{width:"50%"}}/>    
 </div>
 
 <div className="editproform-group" style={{textAlign:"center"}}>
 
-<TextField variant="outlined" label="Email Address" type="email"  value={editP.EmailAddress} onChange={
-  e=> setEditP({...editP,EmailAddress:e.target.value})}
+<TextField variant="outlined" label="Email Address" type="email"  value={editP.email} onChange={
+  e=> setEditP({...editP,email:e.target.value})}
   style={{width:"50%"}}/>    
 
 </div>

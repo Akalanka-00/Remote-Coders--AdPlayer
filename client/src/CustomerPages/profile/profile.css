@@ -1,7 +1,7 @@
 .Profilebox{
   width: 1015px;
   height: 350px;
-  background-color:#f5fefd;
+  background-color: rgb(244, 245, 246);
   box-shadow: 4px 4px 4px rgb(179, 211, 222);
   display: flex;
   border-radius: 10px;
@@ -20,7 +20,7 @@
  .Profilebox2{
   width: 490px;
   height: 400px;
-  background-color:#f5fefd;
+  background-color: rgb(244, 245, 246);
   box-shadow: 4px 4px 4px rgb(179, 211, 222);
   border-radius: 10px;
   margin-bottom: 40px;
@@ -30,7 +30,7 @@
   .Profilebox3{
     width: 500px;
     height: 400px;
-    background-color:#f5fefd;
+    background-color: rgb(244, 245, 246);
     box-shadow: 4px 4px 4px 4px rgb(179, 211, 222);
     border-radius: 10px;
     margin-bottom: 40px;

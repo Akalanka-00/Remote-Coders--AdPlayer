@@ -18,18 +18,27 @@ function Profile(){
       {name: 'Ad6',Adview:'5'},
     ];
     useEffect(() => {
-      // Get the logged-in user ID
-      const loggedInUserId = getLoggedInUserId();
-      setUserId(loggedInUserId);
+      try {
+        const loggedInUserId = getLoggedInUserId();
+        setUserId(loggedInUserId);
+      } catch (error) {
+        console.log(error);
+      }
     }, []);
+    
 
     useEffect(() => {
-      if (userId) {
-        const ProfileCollectionRef = doc(db, "customerCreateAccount", userId);
-        onSnapshot(ProfileCollectionRef, (doc) => {
-          setUser(doc.data());
-        });
+      try{
+        if (userId) {
+          const ProfileCollectionRef = doc(db, "customerCreateAccount", userId);
+          onSnapshot(ProfileCollectionRef, (doc) => {
+            setUser(doc.data());
+          });
+        }
+      }catch(error){
+        console.log(error)
       }
+     
     }, [userId]);
 
     return(
@@ -48,15 +57,15 @@ function Profile(){
   <TableBody>
     <TableRow>
       <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>First Name:</TableCell>
-      <TableCell className="profileboxdetail">{user.FirstName}</TableCell>
+      <TableCell className="profileboxdetail">{user.fName}</TableCell>
     </TableRow>
     <TableRow>
       <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>Last Name:</TableCell>
-      <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>{user.LastName}</TableCell>
+      <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>{user.lName}</TableCell>
     </TableRow>
     <TableRow>
       <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>CustomerID:</TableCell>
-      <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>{user.Id}</TableCell>
+      <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>{user.userId}</TableCell>
     </TableRow>
     <TableRow>
       <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>Country:</TableCell>
@@ -64,7 +73,7 @@ function Profile(){
     </TableRow>
     <TableRow>
       <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>Email Address:</TableCell>
-      <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>{user.EmailAddress}</TableCell>
+      <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>{user.email}</TableCell>
     </TableRow>
     <TableRow>
       <TableCell style={{fontFamily: "Arial", fontSize: "14px"}}>Contacts:</TableCell>
@@ -114,7 +123,7 @@ function Profile(){
 function getLoggedInUserId() {
   // Return the user ID of the logged-in user
  
-  return "J7fvkkKWPfEzMA76FvQQ";
+  return "jczQQJr7DgCRv8J6T9EB";
 }
 
 export default Profile;

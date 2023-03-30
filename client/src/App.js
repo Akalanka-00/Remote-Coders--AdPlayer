@@ -6,7 +6,7 @@ import Dashboard from './CustomerPages/dashboard/dashboard.js';
 import Profile from './CustomerPages/profile/profile';
 import Editprofile from './CustomerPages/profile/editprofile';
 import GameDetail from './CustomerPages/gamedetails/gamedetail';
-import Cuspayment from './CustomerPages/payment/Cuspayment';
+
 import ViewAd from './CustomerPages/adcollection/viewAd';
 import Form from './CustomerPages/form/form';
 import ButtonAppBar from './CustomerPages/navbar/navbar';
@@ -28,7 +28,7 @@ class App extends Component {
           <Route path="/Profile" index element={<Profile/>}/>
           <Route path="/Editprofile" index element={<Editprofile/>}/>
           <Route path="/GameDetail" index element={<GameDetail/>}/>
-          <Route path="/Cuspayment" index element={<Cuspayment/>}/>
+        
           <Route path="/ViewAd" index element={<ViewAd/>}/>
           <Route path="/Form" index element={<Form/>}/>
           <Route path="/Tables" index element={<Tables/>}/>

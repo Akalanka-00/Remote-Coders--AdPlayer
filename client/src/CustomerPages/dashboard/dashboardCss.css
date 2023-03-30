@@ -39,16 +39,14 @@
   {
 color: black;
   }
-  h3{
-    color:black;
-  }
+  
   body{
     margin: 0;
     padding: 0;
   }
   .smallbox{
     height: 180px;
-    width: 290px;
+    width: 245px;
     margin-top: 50px;
     margin-left: 60px;
     margin-right: -50px;
@@ -66,4 +64,12 @@ color: black;
     font-Family:Arial;
     font-size: 10px;
     font-Weight:bold
+  }
+  .topic{
+    font-Family: "Arial";
+    font-size: 16px;
+    font-Weight: bold;
+    padding-top:0px;
+    margin-Top:48px;
+    margin-Left:20px
   }

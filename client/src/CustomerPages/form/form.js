@@ -1,12 +1,15 @@
 import { Card, CardContent, Grid, Select, TextField, FormControlLabel,Checkbox,Button,Typography,MenuItem ,FormControl,InputLabel} from "@material-ui/core";
 import { margin } from "@mui/system";
 import React from "react";
-import { db } from "../../Custfirebase.config"
+import { db,storage} from "../../Custfirebase.config"
 import { useState, useEffect} from "react"
-import { collection, onSnapshot, addDoc,orderBy,query, limit} from "firebase/firestore"
-//import Image from "../../Custimage"
+import { v4 } from "uuid";
+import { collection, onSnapshot, addDoc,orderBy,query, limit,ref, uploadBytes } from "firebase/firestore"
+import Image from "../../Custimage"
 import { CountryDropdown, RegionDropdown} from "react-country-region-selector"
 import DragDropFiles from "./dragdrop";
+
+
 function Form(){
   const [receipes,setreceipes]=useState([]) //because the receipes are in an array
   const [gameDetails, setGames] = useState([])
@@ -221,7 +224,7 @@ alert("Data sent succecfully")
       </FormControl>
 </Grid>
 <Grid>
-  <DragDropFiles/>
+<Image/>
 </Grid>
        
     <Grid style={{marginTop:"30px",marginLeft:"260px"}}>
