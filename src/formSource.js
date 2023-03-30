@@ -43,5 +43,13 @@ export const userInputs = [
       type: "Text",
       placeholder: "true/false",
     },
+    {
+      id: "profilepic",
+      label: "profilepic",
+      type: "Text",
+      maxLength: 100,
+    },
+
+
   ];
   

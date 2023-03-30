@@ -1,4 +1,5 @@
 import "./chart.scss";
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import {
   AreaChart,
   Area,
@@ -9,18 +10,21 @@ import {
 } from "recharts";
 
 const data = [
-  { name: "January", Total: 1200 },
-  { name: "February", Total: 2100 },
-  { name: "March", Total: 800 },
-  { name: "April", Total: 1600 },
-  { name: "May", Total: 900 },
-  { name: "June", Total: 1700 },
+  { name: "January", Total: 100 },
+  { name: "February", Total: 2000 },
+  { name: "March", Total: 80 },
+  { name: "April", Total: 3600 },
+  { name: "May", Total: 500 },
+  { name: "June", Total: 700 },
 ];
 
 const Chart = ({ aspect, title }) => {
   return (
     <div className="chart">
+      <div className="top">
       <div className="title">{title}</div>
+      <TrendingUpIcon  fontSize="small" />
+      </div>
       <ResponsiveContainer width="100%" aspect={aspect}>
         <AreaChart
           width={730}

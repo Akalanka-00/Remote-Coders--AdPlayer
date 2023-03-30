@@ -15,10 +15,6 @@ const Navbar = () => {
     <div className="navbar">
       <div className="wrapper">
         <h2 className="welcome">Hello Admin</h2>
-        <div className="search">
-          <input type="text" placeholder="Search..." />
-          <SearchOutlinedIcon />
-        </div>
         <div className="items">
           <div className="item">
             <DarkModeOutlinedIcon
@@ -26,7 +22,7 @@ const Navbar = () => {
               onClick={() => dispatch({ type: "TOGGLE" })}
             />
           </div>
-          <Link to="/Notifications" style={{ textDecoration: "none", color: "rgba(134,134,134,255)" }}>
+          <Link to="/Notifications" style={{ textDecoration: "none" ,color: "none" }}>
             <div className="item">
               <NotificationsNoneOutlinedIcon className="icon" />
               <div className="counter">1</div>

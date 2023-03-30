@@ -18,7 +18,7 @@ const Home = () => {
         </div>
         <div className="charts">
           <Featured />
-          <Chart title="Login Data (Last 6 Months)" aspect={2 / 1} />
+          <Chart title="View Count Data (Last 6 Months)" aspect={2 / 1} />
         </div>
         <div className="listContainer">
           <div className="listTitle">Admin Details</div>

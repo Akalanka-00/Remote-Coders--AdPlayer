@@ -75,9 +75,8 @@
       cursor: pointer;
     }
   }
-}
 
-/*----------table data----------*/
+  /*----------table data----------*/
 
 .tableContainer {
   width: 100%;
@@ -88,8 +87,10 @@
 
 .tableContainer th {
   text-align: center;
+  font-weight:normal;
   padding: 8px;
   font-family: "Nunito", sans-serif;
+  color: rgba(0, 0, 0, 0.838)
 }
 
 .tableContainer td {
@@ -97,7 +98,7 @@
   padding: 8px;
   text-align: center;
   font-family: "Nunito", sans-serif;
-  color: rgba(0, 0, 0, 0.87)
+  color: rgba(0, 0, 0, 0.636)
 }
 
 .tableContainer tr{
@@ -114,5 +115,8 @@
   color: darkblue;
   border: 1px dotted rgba(0, 0, 139, 0.596);
   cursor: pointer;
+}
+
+
 }
 

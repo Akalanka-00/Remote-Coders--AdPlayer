@@ -75,7 +75,7 @@ const Sidebar = () => {
           </li>
           <li>
             <SettingsApplicationsIcon className="icon" />
-            <span>Settings</span>
+            <span>Help</span>
           </li>
           <p className="title">USER</p>
           <Link to="/Single" style={{ textDecoration: "none" }}>

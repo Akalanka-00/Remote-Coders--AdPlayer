@@ -13,28 +13,6 @@
     align-items: center;
     justify-content: space-between;
 
-    .welcom{
-      color: #000;
-    }
-
-    .search {
-      display: flex;
-      align-items: center;
-      border: 0.5px solid lightgray;
-      padding: 3px;
-      border-radius: 5px;
-
-      input {
-        border: none;
-        outline: none;
-        background: transparent;
-
-        &::placeholder {
-          font-size: 12px;
-        }
-      }
-    }
-
     .items {
       display: flex;
       align-items: center;
@@ -47,15 +25,14 @@
 
         .icon {
           font-size: 20px;
+          color: rgb(85, 26, 139);
         }
         .iconchat {
           font-size: 20px;
           cursor: not-allowed;
+          color: rgb(85, 26, 139);
         }        
-        .iconfscreen {
-          font-size: 20px;
-          cursor: pointer;
-        }
+
 
         .avatar {
           width: 30px;

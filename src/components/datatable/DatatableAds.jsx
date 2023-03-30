@@ -1,6 +1,7 @@
 import "./datatable.scss";
 import "./popup.scss";
 import { useState, useEffect, getDocs } from "react";
+
 import { db } from "../../firebase.config";
 import {
   collection,
@@ -11,19 +12,21 @@ import {
   query,
   orderBy,
   where,
-  updateDoc
+  updateDoc,
 } from "firebase/firestore";
 
-const DatatableAds = ({id}) => {
+const DatatableAds = ({ id }) => {
   const [data, setData] = useState([]);
   const [popupActive, setPopupActive] = useState(false);
   const [AdData_Collection, setAds] = useState([]);
   const adData_CollectionRef = collection(db, "AdData_Collection");
   const [count, setCount] = useState(0);
   const [imageUrl, setImageUrl] = useState("");
-  const q = query(adData_CollectionRef, where("Status", "==", "Pending"))
+  const [selectedAdId, setSelectedAdId] = useState("");
+
 
   
+  const q = query(adData_CollectionRef, where("Status", "==", "Pending"));
 
   useEffect(() => {
     onSnapshot(q, (snapshot) => {
@@ -37,14 +40,17 @@ const DatatableAds = ({id}) => {
         })
       );
       setCount(snapshot.size);
-    });   
-  },[]);
+    });
+  }, []);
 
 
   const handleApprove = async (e) => {
     e.preventDefault();
-    const updateData = { Status: "Approved" };
-    await updateDoc(doc(adData_CollectionRef, id), updateData);
+    const docRef = doc(db, "AdData_Collection", selectedAdId);
+    const data = {
+      Status: "Approved"
+    };
+    updateDoc(docRef, data)
     setPopupActive(false);
     alert("Advertisement approved successfully");
   };
@@ -55,22 +61,23 @@ const DatatableAds = ({id}) => {
     alert("Advertisment rejected succecfully");
   };
 
-
   function adView(params) {
     let imageString = params.Advertisement;
     let imageUrl = new URL(imageString);
     setImageUrl(imageUrl);
-    id=params
+    //id = params;
+    setSelectedAdId(params.id);
   }
-
-
 
   return (
     <div className="datatable">
-      <div className="datatableTitle">PENDING ADVERTISMENTS Total number of ads:{count} </div>
+      <div className="datatableTitle">
+        PENDING ADVERTISMENTS Total number of ads:{count}{" "}
+      </div>
       <table className="tableContainer">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Advertisment Name</th>
             <th>Published Date</th>
             <th>Game</th>
@@ -82,6 +89,7 @@ const DatatableAds = ({id}) => {
         <tbody>
           {AdData_Collection.map((ads, i) => (
             <tr key={i}>
+              <td>{ads.id}</td>
               <td>{ads.Adname}</td>
               <td>{ads.PublishedDate}</td>
               <td>{ads.game || ads.Game}</td>
@@ -91,8 +99,8 @@ const DatatableAds = ({id}) => {
                 <button
                   className="AdButton"
                   onClick={() => {
-                    setPopupActive(!popupActive);
-                    adView(ads);
+                    setPopupActive(!popupActive)
+                    adView(ads)
                   }}
                 >
                   View

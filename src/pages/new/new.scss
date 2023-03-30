@@ -28,6 +28,53 @@
           border-radius: 50%;
           object-fit: cover;
         }
+
+        .imgUpload{
+
+          .imguploadb {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            background-color: teal;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 2px;
+          }
+
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          gap: 10px;
+
+          .custom-file-upload {
+            margin-top: 10px;
+            align-items: center;
+            flex-direction: column;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 400;
+            color: #555;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          }
+          
+          .custom-file-upload:hover {
+            border-color: #999;
+          }
+          
+          .custom-file-upload:active {
+            background-color: #eee;
+          }
+          
+          /* Hide the original file input */
+          input[type="file"] {
+            display: none;
+          }
+        }
       }
 
       .right {
@@ -39,25 +86,33 @@
           gap: 30px;
           justify-content: space-around;
 
+
+
           .formInput {
             width: 40%;
+            align-self: start;
 
-            label {
+            .wrapper {
               display: flex;
               align-items: center;
-              gap: 10px;
-
-              .icon {
-                cursor: pointer;
+              justify-content: center;
+              flex-direction: row;
+              
+              .text {
+                margin-left: 20px;
+                text-decoration: solid;
+                font-family: fantasy;
               }
+              
             }
-
             input {
               width: 100%;
               padding: 5px;
               border: none;
               border-bottom: 1px solid gray;
+              
             }
+
           }
 
           button {
