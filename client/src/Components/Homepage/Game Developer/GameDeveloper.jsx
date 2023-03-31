@@ -33,7 +33,6 @@ const GameDeveloper = () => {
   const gameDataCollectionRef = collection(db, "GamesCollection");
 
   useEffect(() => {
-    console.log("sgs")
     onSnapshot(gameDataCollectionRef, (snapshot) => {
       
       setGameDetails(
@@ -53,7 +52,7 @@ const GameDeveloper = () => {
     { title: "Over 1M+", description: "Game Developers are connected" },
   ];
 
-  const numAscending = [...gameDetails].sort((a, b) => a.Rank - b.Rank);
+  const numAscending = [...gameDetails].sort((a, b) => a.rank - b.rank);
   return (
     <section className="developer-container" id="devoloper">
       <div className="heading">
@@ -93,8 +92,8 @@ const GameDeveloper = () => {
                             className="d-flex justify-content-between align-items-start"
                           >
                             <div className="ms-2 me-auto">
-                              <div className="fw-bold">{gameData.Rank}</div>
-                              {gameData.Name}
+                              <div className="fw-bold">{gameData.rank}</div>
+                              {gameData.game_name}
                             </div>
                             <img
                               className="pop-img"

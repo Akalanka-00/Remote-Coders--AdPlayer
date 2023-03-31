@@ -24,12 +24,10 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="homepage" element={<HomePage />} />
             <Route path="notifications/">
-
               <Route index element={<NotificationDashboard />} />
               <Route path="admin" element={<AdminNotification />} />
               <Route path="customer" element={<CustomerNotification />} />
               <Route path="developer" element={<DeveloperNotification />} />
-              
               <Route
                 path="customer/all"
                 exact
@@ -51,7 +49,6 @@ function App() {
             <Route path="financial" element={<Financial />} />
             <Route path="notification" element={<NotificationHandler />} />
             <Route path="notification/new" element={<NotificationViewer />} />
-
           </Route>
         </Routes>
       </BrowserRouter>

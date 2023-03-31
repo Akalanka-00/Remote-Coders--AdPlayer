@@ -2,3 +2,8 @@
     display: flex;
     justify-content: right;
 }
+
+.admin-container{
+    background-color: white;
+    height: 100vh ;
+}
