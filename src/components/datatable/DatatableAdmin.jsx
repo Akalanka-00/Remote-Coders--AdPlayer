@@ -28,6 +28,7 @@ const DatatableAdmin = () => {
   const [data, setData] = useState([]);
   const [subadmin, setAdmins] = useState([]);
   const setAdminsRef = collection(db, "subadmin");
+  const [count, setCount] = useState(0);
   useEffect(() => {
     onSnapshot(setAdminsRef, (snapshot) => {
       setAdmins(
@@ -39,8 +40,9 @@ const DatatableAdmin = () => {
           };
         })
       );
+      setCount(snapshot.size);
     });
-  });
+  },[]);
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
@@ -74,7 +76,7 @@ const DatatableAdmin = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        ADMINS Total number of admins: {subadmin.length}
+        ADMINS Total number of admins: {count}
         <Link to="/users/new" className="link">
           Add New
         </Link>

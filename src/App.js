@@ -6,8 +6,9 @@ import Notification from "./pages/Notification/Notification.jsx";
 import Admin from "./pages/Admin/Admin.jsx";
 import Games from "./pages/Games/Games.jsx";
 import Ads from "./pages/Ads/Ads.jsx";
+import Stats from "./pages/Stats/Stats.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {  userInputs } from "./formSource";
+import { userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -36,18 +37,15 @@ function App() {
             </Route>
             <Route path="Ads">
               <Route index element={<Ads />} />
-              <Route path=":productId" element={<Single />} />
-
             </Route>
             <Route path="Notifications">
               <Route index element={<Notification />} />
-              <Route path=":productId" element={<Single />} />
-\
             </Route>
             <Route path="Single">
               <Route index element={<Single />} />
-              <Route path=":productId" element={<Single />} />
-
+            </Route>
+            <Route path="Stats">
+              <Route index element={<Stats />} />
             </Route>
           </Route>
         </Routes>

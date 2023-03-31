@@ -56,9 +56,8 @@ const DatatableGames = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
+            <div className="viewButton">View</div>
 
-              <div className="viewButton">View</div>
-    
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id)}

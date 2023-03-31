@@ -72,7 +72,7 @@ const DatatableAds = ({ id }) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        PENDING ADVERTISMENTS Total number of ads:{count}{" "}
+        PENDING ADVERTISMENTS Total number of ads:{count}
       </div>
       <table className="tableContainer">
         <thead>

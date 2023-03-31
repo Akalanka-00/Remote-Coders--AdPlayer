@@ -27,19 +27,19 @@ export const userInputs = [
     },
     {
       id: "privilage1",
-      label: "Privilage 1(true/false)",
+      label: "Privilage Help Center (true/false)",
       type: "Text",
       placeholder: "true/false",
     },
     {
       id: "privilage2",
-      label: "Privilage 2",
+      label: "Privilage Finance",
       type: "Text",
       placeholder: "true/false",
     },
     {
       id: "privilage3",
-      label: "Privilage 3",
+      label: "Privilage For Games Handling",
       type: "Text",
       placeholder: "true/false",
     },

@@ -11,12 +11,14 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import BurstModeIcon from "@mui/icons-material/BurstMode";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 
 const Sidebar = () => {
-  const { dispatch } = useContext(DarkModeContext);
+  const { darkMode, dispatch } = useContext(DarkModeContext);
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -60,10 +62,12 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Financial Stats</span>
-          </li>
+          <Link to="/Stats" style={{ textDecoration: "none" }}>
+            <li>
+              <InsertChartIcon className="icon" />
+              <span>Financial Stats</span>
+            </li>
+          </Link>
           <li>
             <AssignmentTurnedInIcon className="icon" />
             <span>Approved</span>
@@ -90,20 +94,30 @@ const Sidebar = () => {
           </li>
           <p className="title">THEME</p>
           <li>
-            <DarkModeOutlinedIcon
-              className="icon"
-              onClick={(e) => {
-                e.stopPropagation(); // prevent event bubbling
-                dispatch({ type: "TOGGLE" });
-              }}
-            />
+            {darkMode ? (
+              <LightModeIcon
+                className="icon"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatch({ type: "TOGGLE" });
+                }}
+              />
+            ) : (
+              <DarkModeOutlinedIcon
+                className="icon"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatch({ type: "TOGGLE" });
+                }}
+              />
+            )}
             <span
               onClick={(e) => {
                 e.stopPropagation(); // prevent event bubbling
                 dispatch({ type: "TOGGLE" });
               }}
             >
-              Dark mode switcher
+              {darkMode ? "Light" : "Dark"} mode switcher
             </span>
           </li>
         </ul>
