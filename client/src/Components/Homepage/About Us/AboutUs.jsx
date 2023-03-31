@@ -9,7 +9,7 @@ import PIC2 from "../../../Assets/Slides/pic2.jpg";
 
 
 const AboutUs = () => {
-  const users = [
+  const users = [ //Create user types
     {
       title: "Game Developer",
       description: "Game Developer Description. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea accusantium odit quas nam eum? Accusantium non assumenda ducimus impedit ullam facilis labore. Esse molestiae distinctio impedit? Molestias dolores saepe voluptas.",
@@ -28,7 +28,7 @@ const AboutUs = () => {
       </div>
 
       <div className="users">
-        {users.map((user, index) => (
+        {users.map((user, index) => ( //map users
           <div key={index}>
             <UserCard className="user-card-parent" user={user} />
           </div>
@@ -38,10 +38,11 @@ const AboutUs = () => {
   );
 };
 
-function UserCard({user}) {
+function UserCard({user}) { //Create user card
   return (
     <Card style={{ width: '18rem' }} className="user-card">
-      <Card.Img variant="top" src={user.path} />
+      {/* Card image */}
+      <Card.Img variant="top" src={user.path} /> 
       <Card.Body className="user-card-about">
         {/* <Card.Title className="user-card-title">{user.title}</Card.Title> */}
         <Card.Text>

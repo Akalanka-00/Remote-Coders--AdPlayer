@@ -17,11 +17,11 @@ const DeveloperComplain = () => {
     }
 );
 
-  const complainCollectionRef = collection(db,"ComplainCollection");
-  const handleSubmit = e =>{
+  const complainCollectionRef = collection(db,"ComplainCollection"); //Create complain Collection ref
+  const handleSubmit = e =>{ // Handle submit
     e.preventDefault()
      
-
+//Validate the input
     if(
         !complain.title||
         !complain.description
@@ -31,7 +31,7 @@ const DeveloperComplain = () => {
       return
     }
         console.log(complain);
-        addDoc(complainCollectionRef, complain);
+        addDoc(complainCollectionRef, complain); // Update complain variable
         setComplain({
             complained_Date: "",
             description: "",
@@ -42,7 +42,7 @@ const DeveloperComplain = () => {
           })
 
           alert("Data sent succecfully")
-          setAddComplainBtnState(!addComplainBtnState);
+          setAddComplainBtnState(!addComplainBtnState); // Change complain button state
 
     
 
@@ -63,13 +63,14 @@ const DeveloperComplain = () => {
 
           <form className="form-card" onSubmit={handleSubmit}>
             <h1 className="complain-title">Add Complain</h1>
-
+{/* Get complain title */}
             <div className="form-group">
               <label className="form-label">Subject</label>
               <input type="text" vlaue={complain.title} 
               onChange = {e => setComplain({...complain, title: e.target.value})}/>
             </div>
 
+{/* Get complain description */}
             <div className="form-group">
               <label className="form-label">Description</label>
               <input type="text" vlaue={complain.description} 
@@ -80,6 +81,7 @@ const DeveloperComplain = () => {
             <Button
                 type="submit"
                 onClick={() => {
+                  // Get current date and time
                   const today = new Date();
                   const time =
                     today.getFullYear() +
@@ -94,7 +96,7 @@ const DeveloperComplain = () => {
                     ":" +
                     today.getSeconds();
                   console.log(time);
-                  setComplain({ ...complain, complained_Date: time });
+                  setComplain({ ...complain, complained_Date: time }); // Update the complain variable
                 }}
                 variant="primary"
               >
@@ -108,7 +110,7 @@ const DeveloperComplain = () => {
         <div className="new-complain-btn-holder">
           <Button
             variant="outline-danger"
-            onClick={() => setAddComplainBtnState(!addComplainBtnState)}
+            onClick={() => setAddComplainBtnState(!addComplainBtnState)} // Change the complain button state
           >
             Complain
           </Button>

@@ -17,6 +17,7 @@ const GameDeveloperFinancialDetails = () => {
   ];
 
   useEffect(() => {
+    //Get data from the backend
     baseUrl
       .get("/api/admin/financial/developer/daily")
       .then((res) => {
@@ -37,7 +38,7 @@ const GameDeveloperFinancialDetails = () => {
               <th key={index}>{title}</th> // Define Table Headings
             ))}
           </tr>
-          {tableData.map((data, i) => {
+          {tableData.map((data, i) => { //Insesrt data into the table
            return ( <tr key={i}>
               <td><img src= {data.developer_profile}/></td>
               <td>{data.developer_name}</td>

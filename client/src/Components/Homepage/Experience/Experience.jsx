@@ -7,6 +7,7 @@ import "./Experience.css";
 
 const Experience = () => {
   const explist = [
+    //Experience data list
     {
       title: "Feature1",
       description:
@@ -41,36 +42,42 @@ const Experience = () => {
   return (
     <section className="experience-container" id="experience">
       <div className="exp-content">
-        {explist.map((experience, index) => (
-          <div key={index}>
-            <Table responsive>
-              <tbody>
-                <tr>
-                  {index % 2 == 0 ? (
-                    <div>
-                      <CardHeader experience={experience} />
-                      {console.log(index % 2)}
-                    </div>
-                  ) : (
-                    <div></div>
-                  )}
-                </tr>
-                <tr>
-                  {index % 2 == 1 ? (
-                    <div>
-                      <CardHeader experience={experience} />
-                      {console.log("index % 2")}
-                    </div>
-                  ) : (
-                    <div></div>
-                  )}
-                </tr>
-              </tbody>
-            </Table>
+        {explist.map(
+          (
+            experience,
+            index //Map experience data list to the table
+          ) => (
+            <div key={index}>
+              <Table responsive>
+                <tbody>
+                  <tr>
+                    {index % 2 === 0 ? (
+                      <div>
+                        {/* Pass data to CardHeader Component */}
+                        <CardHeader experience={experience} />
+                        {console.log(index % 2)}
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+                  </tr>
+                  <tr>
+                    {index % 2 === 1 ? (
+                      <div>
+                        {/* Pass data to CardHeader Component */}
 
-            
-          </div>
-        ))}
+                        <CardHeader experience={experience} />
+                        {console.log("index % 2")}
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+          )
+        )}
       </div>
     </section>
   );

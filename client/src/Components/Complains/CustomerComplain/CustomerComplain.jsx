@@ -10,7 +10,7 @@ import "./CustomerComplain.css";
 
 const CustomerComplain = () => {
   const [addComplainBtnState, setAddComplainBtnState] = useState(false);
-  const [complain, setComplain] = useState({
+  const [complain, setComplain] = useState({ //complain
     complained_Date: "",
     description: "",
     status: false,
@@ -19,17 +19,17 @@ const CustomerComplain = () => {
     user_Type: "Cus",
   });
 
-  const complainCollectionRef = collection(db, "ComplainCollection");
+  const complainCollectionRef = collection(db, "ComplainCollection"); //Create complain collection ref
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!complain.title || !complain.description) {
+    if (!complain.title || !complain.description) { //Validate the input
       alert("Please fill out all fields");
       return;
     }
     console.log(complain);
-    addDoc(complainCollectionRef, complain);
+    addDoc(complainCollectionRef, complain); // Add the complain data to the database
     setComplain({
       complained_Date: "",
       description: "",
@@ -40,7 +40,7 @@ const CustomerComplain = () => {
     });
 
     alert("Data sent succecfully");
-    setAddComplainBtnState(!addComplainBtnState);
+    setAddComplainBtnState(!addComplainBtnState); //Change add complain button state
   }
 
   return (
@@ -50,14 +50,15 @@ const CustomerComplain = () => {
           <div className="complain-close-btn">
             <Button
               variant="outline-success"
-              onClick={() => setAddComplainBtnState(!addComplainBtnState)}
+              onClick={() => setAddComplainBtnState(!addComplainBtnState)} //Change add complain button state
             >
               Close Complain
             </Button>
           </div>
 
-          <form className="form-card" onSubmit={handleSubmit}>
+          <form className="form-card" onSubmit={handleSubmit}> 
             <h1 className="complain-title">Add Complain</h1>
+            {/* Get Complain title */}
 
             <div className="form-group">
               <label className="form-label">Subject</label>
@@ -69,6 +70,8 @@ const CustomerComplain = () => {
                 }
               />
             </div>
+
+            {/* Get complain description */}
 
             <div className="form-group" >
               <label className="form-label">Description</label>
@@ -85,6 +88,7 @@ const CustomerComplain = () => {
               <Button
                 type="submit"
                 onClick={() => {
+                  //Get the current Datae and time
                   const today = new Date();
                   const time =
                     today.getFullYear() +
@@ -99,7 +103,7 @@ const CustomerComplain = () => {
                     ":" +
                     today.getSeconds();
                   console.log(time);
-                  setComplain({ ...complain, complained_Date: time });
+                  setComplain({ ...complain, complained_Date: time }); //Update the complain variable
                 }}
                 variant="primary"
               >
@@ -112,7 +116,7 @@ const CustomerComplain = () => {
         <div className="new-complain-btn-holder">
           <Button
             variant="outline-danger"
-            onClick={() => setAddComplainBtnState(!addComplainBtnState)}
+            onClick={() => setAddComplainBtnState(!addComplainBtnState)} //Change complain button state
           >
             Complain
           </Button>

@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import { db } from "../../../Services/firebase-config";
-import {
-  collection,
-  onSnapshot,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
+import { collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
 
 import "./AdminComplain.css";
 const AdminComplain = () => {
   const tableHeadList = [
+    //Table heading list
     "#",
     "User Id",
     "User Type",
@@ -32,14 +28,15 @@ const AdminComplain = () => {
     user_Type: "Cus",
   });
 
-  
   function handleShow(element) {
+    //handle the reviewed complains or not
     markReviewedComplain(element);
   }
 
-  const complainCollectionRef = collection(db, "ComplainCollection");
+  const complainCollectionRef = collection(db, "ComplainCollection"); // Create complain Collection
 
   function markReviewedComplain(element) {
+    // Mark the complain as reviewed
     console.log(element);
     setReviewMark({
       complained_Date: element.complained_Date,
@@ -50,11 +47,12 @@ const AdminComplain = () => {
       user_Type: element.user_Type,
     });
 
-    const updateComplainRef = doc(db, "ComplainCollection", element.id)
-    updateDoc(updateComplainRef, reviewMark);
+    const updateComplainRef = doc(db, "ComplainCollection", element.id); //Update complain collection doc
+    updateDoc(updateComplainRef, reviewMark); //Update the complain as reviewed
   }
 
   useEffect(() => {
+    //Retrieved the Complain data
     onSnapshot(complainCollectionRef, (snapshot) => {
       setComplains(
         snapshot.docs.map((doc) => {
@@ -76,6 +74,7 @@ const AdminComplain = () => {
             setSelectReview(!selectReview);
           }}
         >
+          {/* Check the state for the btn */}
           {!selectReview ? "Reviewed Complains" : "Not Reviewed Complains"}
         </Button>
       </div>
@@ -89,16 +88,20 @@ const AdminComplain = () => {
       <Table responsive>
         <thead>
           <tr>
+            {/* Map Table headings to the table */}
             {tableHeadList.map((element, index) => (
               <td key={index}>{element}</td>
             ))}
           </tr>
         </thead>
         <tbody>
+          {/* Map the available complain to the table */}
           {complains.map((element, index) => (
             <tr key={index}>
+              {/* Check is it reviewed or not */}
               {selectReview ? (
                 <>
+                  {/* Check the Complain status */}
                   {element.status ? (
                     <>
                       <td>{index}</td>

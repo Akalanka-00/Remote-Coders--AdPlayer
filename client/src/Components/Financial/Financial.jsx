@@ -14,13 +14,15 @@ const Financial = () => {
           <Accordion.Header>Game Developer App revenue</Accordion.Header>
 
           <Accordion.Body>
-          <GameDeveloperFinancialDetails />
+            {/* Game developer Financial Details */}
+          <GameDeveloperFinancialDetails /> 
           </Accordion.Body>
         </Accordion.Item>
 
         <Accordion.Item eventKey="1">
           <Accordion.Header>Game Developer widthrowals</Accordion.Header>
           <Accordion.Body>
+            {/* Game Developer widthrowals Details */}
           <GameDeveloperFinancialDetails />
 
           </Accordion.Body>

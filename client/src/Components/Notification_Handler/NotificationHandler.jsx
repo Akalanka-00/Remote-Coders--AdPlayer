@@ -21,7 +21,6 @@ const NotificationHandler = () => {
   const [isDeveloperChecked, setIsDeveloperChecked] = useState(false);
   const [isCustomerChecked, setIsCustomerChecked] = useState(false);
 
-
   async function sendNotification(
     title,
     desc,
@@ -44,6 +43,7 @@ const NotificationHandler = () => {
       target_audience
     );
 
+    //Check the results
     if (result === 0) {
       console.log("Nothing Happened");
     } else {
@@ -51,48 +51,44 @@ const NotificationHandler = () => {
     }
   }
 
-  function get_target_audience(){
+  //Get the target audience
+  function get_target_audience() {
     let arr = [];
-    if(isAdminChecked)
-    arr.push("Admin")
+    if (isAdminChecked) arr.push("Admin");
 
-    if(isCustomerChecked)
-    arr.push("Customer")
+    if (isCustomerChecked) arr.push("Customer");
 
-    if(isDeveloperChecked)
-    arr.push("Developer")
+    if (isDeveloperChecked) arr.push("Developer");
 
     return arr;
-  }
-
-  function submitValidation(){
-
-    const result = !notificationData.send_user_id || !notificationData.description || !notificationData.title ;//||
-    //(!isAdminChecked && !isCustomerChecked && !isDeveloperChecked);
-    console.log(result);
-    if(result)
-    {return false;}
-  
-    return true;
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(notificationData);
-    const result = !notificationData.send_user_id || !notificationData.description || !notificationData.title ||
-    (!isAdminChecked && !isCustomerChecked && !isDeveloperChecked);
-    if(!result){ //check the empty fields
-      sendNotification(notificationData.title,notificationData.description, true, notificationData.send_user_type, notificationData.send_user_id,get_target_audience());
+    //validation
+    const result =
+      !notificationData.send_user_id ||
+      !notificationData.description ||
+      !notificationData.title ||
+      (!isAdminChecked && !isCustomerChecked && !isDeveloperChecked);
+    if (!result) {
+      //check the empty fields
+      sendNotification(
+        notificationData.title,
+        notificationData.description,
+        true,
+        notificationData.send_user_type,
+        notificationData.send_user_id,
+        get_target_audience()
+      );
+    } else {
+      alert("Fill all the fields");
     }
-    else{
-      alert("Fill all the fields")
-    }
-
   }
   return (
     <div>
-     
-     {/* Navbar */}
+      {/* Navbar */}
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
@@ -123,10 +119,9 @@ const NotificationHandler = () => {
         </Container>
       </Navbar>
 
-{/* Send notification */}
+      {/* Send notification */}
       <div className="form-container">
         <Form className="notification-form" onSubmit={handleSubmit}>
-
           <Form.Group className="mb-3" controlId="formUserType">
             {/* Select logged user type */}
             <Form.Label>User Type</Form.Label>
@@ -158,6 +153,7 @@ const NotificationHandler = () => {
           </Form.Group>
 
           {/* Enter logged user id */}
+          {/* Get senders user ID */}
           <Form.Group className="mb-3" controlId="formUserID">
             <Form.Label>User ID</Form.Label>
             <Form.Control
@@ -172,6 +168,7 @@ const NotificationHandler = () => {
             />
           </Form.Group>
 
+          {/* Get notification title */}
           <Form.Group className="mb-3" controlId="formTitle">
             <Form.Label>Title</Form.Label>
             <Form.Control
@@ -186,6 +183,7 @@ const NotificationHandler = () => {
             />
           </Form.Group>
 
+          {/* Get Notification Description */}
           <Form.Group className="mb-3" controlId="formDescription">
             <Form.Label>Description</Form.Label>
             <Form.Control
@@ -200,11 +198,12 @@ const NotificationHandler = () => {
             />
           </Form.Group>
 
+          {/* Broadcast Options */}
           <Form.Check
             type="radio"
             label="Broadcast notification for selected user types"
             name="broadcast"
-            value= {true}
+            value={true}
             checked={notificationData.broadcast === true}
             onChange={(e) => {
               setNotificationData({
@@ -231,6 +230,7 @@ const NotificationHandler = () => {
           <br></br>
           <h2>Select Target Audience</h2>
 
+          {/* Select target audiences */}
           <Form.Check
             type="checkbox"
             label="Admin"

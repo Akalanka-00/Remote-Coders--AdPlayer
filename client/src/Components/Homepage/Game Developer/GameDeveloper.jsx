@@ -6,7 +6,6 @@ import { db } from "../../../Services/firebase-config";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 
-import PopularGames from "./PopularGames";
 
 import "./GameDeveloper.css";
 import "./DeveloperDetails.css";
