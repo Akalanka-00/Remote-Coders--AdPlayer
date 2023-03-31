@@ -1,7 +1,7 @@
 import './games.scss'
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
-import DatatableGames from '../../components/datatable/DatatableGames'
+//import DatatableGames from '../../components/datatable/DatatableGames'
 
 const Games = () => {
   return (
@@ -9,7 +9,6 @@ const Games = () => {
       <Sidebar/>
       <div className="listContainer">
         <Navbar/>
-        <DatatableGames/>
       </div>
     </div>
   )

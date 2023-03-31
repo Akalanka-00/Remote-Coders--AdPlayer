@@ -14,6 +14,8 @@ import {
   where,
 } from "firebase/firestore";
 
+
+
 const columns = [
   { field: "id", headerName: "ID", width: 100 },
   { field: "gameName", headerName: "Game Name", width: 130 },
