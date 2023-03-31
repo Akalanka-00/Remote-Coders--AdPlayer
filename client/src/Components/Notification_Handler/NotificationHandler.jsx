@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import send_notification_api from "../../Apis/send_notification_api";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { FaBell } from 'react-icons/fa'
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { FaBell } from "react-icons/fa";
 import Form from "react-bootstrap/Form";
 
 import "./NotificationHandler.css";
 const NotificationHandler = () => {
+  const [notificationData, setNotificationData] = useState({
+    title: "",
+    description: "",
+    broadcast: false,
+    send_user_type: "",
+    send_user_id: "",
+    target_audience: [], // if broadcast is true : [customer, developer, admin, sub-admin] else custom users
+  });
+  const [isAdminChecked, setIsAdminChecked] = useState(false);
+  const [isDeveloperChecked, setIsDeveloperChecked] = useState(false);
+  const [isCustomerChecked, setIsCustomerChecked] = useState(false);
+
+
   async function sendNotification(
     title,
     desc,
@@ -37,114 +50,219 @@ const NotificationHandler = () => {
       console.log("Something Happened");
     }
   }
+
+  function get_target_audience(){
+    let arr = [];
+    if(isAdminChecked)
+    arr.push("Admin")
+
+    if(isCustomerChecked)
+    arr.push("Customer")
+
+    if(isDeveloperChecked)
+    arr.push("Developer")
+
+    return arr;
+  }
+
+  function submitValidation(){
+
+    const result = !notificationData.send_user_id || !notificationData.description || !notificationData.title ;//||
+    //(!isAdminChecked && !isCustomerChecked && !isDeveloperChecked);
+    console.log(result);
+    if(result)
+    {return false;}
+  
+    return true;
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(notificationData);
+    const result = !notificationData.send_user_id || !notificationData.description || !notificationData.title ||
+    (!isAdminChecked && !isCustomerChecked && !isDeveloperChecked);
+    if(!result){ //check the empty fields
+      sendNotification(notificationData.title,notificationData.description, true, notificationData.send_user_type, notificationData.send_user_id,get_target_audience());
+    }
+    else{
+      alert("Fill all the fields")
+    }
+
+  }
   return (
     <div>
-      {/* <Button
-        onClick={async () => {
-          await sendNotification(
-            "Hii",
-            "This is a notification from frontend",
-            true,
-            ["customer", "developer", "admin"]
-          );
-        }}
-      >
-        Send Notification
-      </Button> */}
-      <Navbar bg="dark" variant='dark' expand="lg">
-      <Container fluid>
-        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Link</Nav.Link>
-            
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
-          </Nav>
-          <a className="notification" href="notification/new" onClick={()=>{
-            console.log("clicked")
-          }}>
-            <FaBell/>
-          </a>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+     
+     {/* Navbar */}
+      <Navbar bg="dark" variant="dark" expand="lg">
+        <Container fluid>
+          <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
+              <Nav.Link href="#action1">Home</Nav.Link>
+              <Nav.Link href="#action2">Link</Nav.Link>
 
+              <Nav.Link href="#" disabled>
+                Link
+              </Nav.Link>
+            </Nav>
+            <a
+              className="notification"
+              href="notification/new"
+              onClick={() => {
+                console.log("clicked");
+              }}
+            >
+              <FaBell />
+            </a>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
+{/* Send notification */}
       <div className="form-container">
-        <Form className="notification-form">
+        <Form className="notification-form" onSubmit={handleSubmit}>
+
           <Form.Group className="mb-3" controlId="formUserType">
+            {/* Select logged user type */}
             <Form.Label>User Type</Form.Label>
-            <Form.Select>
-              <option>Admin</option>
-              <option>Customer</option>
-              <option>Developer</option>
+            <Form.Select
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val === 1) {
+                  setNotificationData({
+                    ...notificationData,
+                    send_user_type: "Admin",
+                  });
+                } else if (val === 2) {
+                  setNotificationData({
+                    ...notificationData,
+                    send_user_type: "Customer",
+                  });
+                } else if (val === 3) {
+                  setNotificationData({
+                    ...notificationData,
+                    send_user_type: "Developer",
+                  });
+                }
+              }}
+            >
+              <option value={1}>Admin</option>
+              <option value={2}>Customer</option>
+              <option value={3}>Developer</option>
             </Form.Select>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          {/* Enter logged user id */}
+          <Form.Group className="mb-3" controlId="formUserID">
             <Form.Label>User ID</Form.Label>
-            <Form.Control type="text" placeholder="Title" />
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Title</Form.Label>
-            <Form.Control type="text" placeholder="Title" />
+            <Form.Control
+              type="text"
+              placeholder="User ID"
+              onChange={(e) => {
+                setNotificationData({
+                  ...notificationData,
+                  send_user_id: e.target.value,
+                });
+              }}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formTitle">
             <Form.Label>Title</Form.Label>
-            <Form.Control type="text" placeholder="Title" />
+            <Form.Control
+              type="text"
+              placeholder="Title"
+              onChange={(e) => {
+                setNotificationData({
+                  ...notificationData,
+                  title: e.target.value,
+                });
+              }}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formDescription">
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control
+              as="textarea"
+              rows={3}
+              onChange={(e) => {
+                setNotificationData({
+                  ...notificationData,
+                  description: e.target.value,
+                });
+              }}
+            />
           </Form.Group>
 
           <Form.Check
-            className="form-radio-btn"
-            label="Send to selected user type"
-            name="grp-1"
             type="radio"
-            value={3}
-            id="radio-3"
-            // checked={}
-            onChange={(e) => {}}
+            label="Broadcast notification for selected user types"
+            name="broadcast"
+            value= {true}
+            checked={notificationData.broadcast === true}
+            onChange={(e) => {
+              setNotificationData({
+                ...notificationData,
+                broadcast: e.target.value,
+              });
+            }}
           />
 
           <Form.Check
-            className="form-radio-btn"
-            label="Send to selected user"
-            name="grp-1"
             type="radio"
-            value={3}
-            id="radio-3"
-            // checked={}
-            onChange={(e) => {}}
+            label="Broadcast notification for selected users (currently not available)"
+            name="broadcast"
+            value={false}
+            checked={notificationData.broadcast === false}
+            onChange={(e) => {
+              setNotificationData({
+                ...notificationData,
+                broadcast: e.target.value,
+              });
+            }}
           />
 
-          <Form.Group className="mb-3" controlId="formUserType">
-            <Form.Label>User Type</Form.Label>
-            <Form.Select>
-              <option>Admin</option>
-              <option>Customer</option>
-              <option>Developer</option>
-            </Form.Select>
-          </Form.Group>
+          <br></br>
+          <h2>Select Target Audience</h2>
 
-          <Form.Group  className="mb-3" controlId="formTitle">
+          <Form.Check
+            type="checkbox"
+            label="Admin"
+            checked={isAdminChecked}
+            onChange={(e) => {
+              setIsAdminChecked(e.target.checked);
+            }}
+          />
+
+          <Form.Check
+            type="checkbox"
+            label="Customer"
+            checked={isCustomerChecked}
+            onChange={(e) => {
+              setIsCustomerChecked(e.target.checked);
+            }}
+          />
+
+          <Form.Check
+            type="checkbox"
+            label="Developer"
+            checked={isDeveloperChecked}
+            onChange={(e) => {
+              setIsDeveloperChecked(e.target.checked);
+            }}
+          />
+
+          {/* <Form.Group className="mb-3" controlId="formTitle">
             <Form.Label>Selected User ID</Form.Label>
-            <Form.Control type="text" placeholder="Title" disabled/>
-          </Form.Group>
-        
+            <Form.Control type="text" placeholder="Title" disabled />
+          </Form.Group> */}
+
           <Button variant="primary" type="submit">
             Submit
           </Button>

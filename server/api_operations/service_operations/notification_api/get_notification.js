@@ -8,6 +8,7 @@ module.exports = async function get_notification(req, res){
   const available_Notification_List = available_Notification_Snapshot.docs.map((doc)=>({id: doc.id, ...doc.data()}));
 
      res.send(available_Notification_List)
+  console.log("Success")
 
- // res.send({msg: "Notification get successfully"});
+ // res.json({msg: "Notification get successfully"});
 }

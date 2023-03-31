@@ -8,7 +8,7 @@ router.post('/push/notification' ,(req,res)=>{
 })
 
 router.get('/get/notification' ,(req,res)=>{
-   get_notification(req,res)
+   get_notification(req,res);
 })
 
 
