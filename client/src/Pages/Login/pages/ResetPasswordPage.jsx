@@ -1,6 +1,5 @@
 import {
     Button,
-    Center,
     chakra,
     FormControl,
     FormLabel,
@@ -10,76 +9,78 @@ import {
     useToast,
   } from '@chakra-ui/react'
   import React, { useState } from 'react'
-  import { useHistory } from 'react-router-dom'
   import { Card } from '../components/Card'
-  import DividerWithText from '../components/DividerWithText'
   import { Layout } from '../components/Layout'
+  import { useHistory, useLocation } from 'react-router-dom'
   import { useAuth } from '../contexts/AuthContext'
+  //import { db } from "../utils/init-firebase"
   
-  export default function ForgotPasswordPage() {
+  
+  
+  
+  function useQuery() {
+    return new URLSearchParams(useLocation().search)
+  }
+  
+  export default function ResetPasswordPage() {
+    const { resetPassword } = useAuth()
+    const query = useQuery()
     const history = useHistory()
-    const { forgotPassword } = useAuth()
+    const [password, setPassword] = useState('')
+    //const [newPassword, setNewPassword] = useState('')
     const toast = useToast()
   
-    const [email, setEmail] = useState('')
-  
+    console.log(query.get('mode'), query.get('oobCode'))
     return (
       <Layout>
         <Heading textAlign='center' my={12}>
-          Forgot password
+          Reset password
         </Heading>
         <Card maxW='md' mx='auto' mt={4}>
           <chakra.form
             onSubmit={async e => {
               e.preventDefault()
-              // your login logic here
-  
-              // To Do List
-              //Get user id from the given email
-              //Pass it to the reset screen
-              //Update the new password
               try {
-                await forgotPassword(email)
-                toast({        //to give feedback to users after an action has taken place.
-                  description: `An email is sent to ${email} for password reset instructions.`,
+                await resetPassword(query.get('oobCode'), password)
+  
+                // // update password in Firestore
+                // const userDocRef = doc(collection(db, 'customerCreateAccount'), query.get('oobCode'));
+                // await updateDoc(userDocRef, {password: newPassword});
+  
+                toast({
+                  description: 'Password has been changed, you can login now.',
                   status: 'success',
                   duration: 9000,
                   isClosable: true,
                 })
+                history.push('/login')
               } catch (error) {
-                console.log(error.message)
                 toast({
                   description: error.message,
                   status: 'error',
                   duration: 9000,
                   isClosable: true,
                 })
+                console.log(error.message)
               }
             }}
           >
             <Stack spacing='6'>
-              <FormControl id='email'>
-                <FormLabel>Email address</FormLabel>
+              <FormControl id='password'>
+                <FormLabel>New password</FormLabel>
                 <Input
-                  name='email'
-                  type='email'
-                  autoComplete='email'
+                  type='password'
+                  autoComplete='password'
                   required
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                 />
               </FormControl>
               <Button type='submit' colorScheme='pink' size='lg' fontSize='md'>
-                Submit
+                Reset password
               </Button>
             </Stack>
           </chakra.form>
-          <DividerWithText my={6}>OR</DividerWithText>
-          <Center>
-            <Button variant='link' onClick={() => history.push('/login')}>
-              Login
-            </Button>
-          </Center>
         </Card>
       </Layout>
     )

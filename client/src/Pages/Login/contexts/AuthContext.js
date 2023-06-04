@@ -9,6 +9,7 @@ import {
   GoogleAuthProvider,
   signOut,
   confirmPasswordReset,
+  sendEmailVerification,
 } from 'firebase/auth'
 
 const AuthContext = createContext({
@@ -19,6 +20,7 @@ const AuthContext = createContext({
   logout: () => Promise,
   forgotPassword: () => Promise,
   resetPassword: () => Promise,
+ 
 })
 
 export const useAuth = () => useContext(AuthContext)
@@ -43,9 +45,31 @@ export default function AuthContextProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password)
   }
 
-  function register(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password)
+  async function register(email, password) {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+  
+    // Call the sendEmailVerification function only if the user is successfully registered
+    if (user) {
+      await sendEmailVerification(user, {
+        url: `http://localhost:3000/login`, // Replace with your desired verification URL
+      });
+  
+      // Get the ID token using the getIdToken method
+      const idToken = await user.getIdToken();
+  
+      // Add the ID token to the user object
+      user.idToken = idToken;
+    }
+  
+    return userCredential;
   }
+  
+  
+  
+  
+
+ 
 
   function forgotPassword(email) {
     return sendPasswordResetEmail(auth, email, {

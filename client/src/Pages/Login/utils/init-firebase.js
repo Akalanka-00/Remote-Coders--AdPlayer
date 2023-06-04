@@ -1,0 +1,32 @@
+import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
+import { getFirestore } from "firebase/firestore"
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAFf1onQAB6yKO5NEIfBHJ9XPO0BOtpmso",
+  authDomain: "remotecoders-2140a.firebaseapp.com",
+  projectId: "remotecoders-2140a",
+  storageBucket: "remotecoders-2140a.appspot.com",
+  messagingSenderId: "894126657098",
+  appId: "1:894126657098:web:77ab7cf91e409fc64d20b3",
+  measurementId: "G-XWFYE5BRX7"
+}
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyAt1fPI5ZcD7qnpbq_UJyZ9Kv3lPYZIwtg",
+//   authDomain: "remote-coders-test-ii.firebaseapp.com",
+//   projectId: "remote-coders-test-ii",
+//   storageBucket: "remote-coders-test-ii.appspot.com",
+//   messagingSenderId: "600870640184",
+//   appId: "1:600870640184:web:8bbde746767761d88164cd",
+//   measurementId: "G-HBLZVPZJVH"
+// };
+
+const app = initializeApp(firebaseConfig)
+export const auth = getAuth(app)
+
+const db = getFirestore(app)
+
+export { db }
+
+
