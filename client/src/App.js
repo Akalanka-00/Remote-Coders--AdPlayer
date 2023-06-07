@@ -1,10 +1,3 @@
-<<<<<<< Updated upstream
-import HomePage from './Pages/HomePage/HomePage'
-function App() {
-  return (
-    <div className="App">
-      <HomePage/>
-=======
 import Home from "./pages/home/Home";
 import Logs from "./pages/Logs/Logs";
 import Login from "./pages/login/Login";
@@ -61,7 +54,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
->>>>>>> Stashed changes
     </div>
   );
 }

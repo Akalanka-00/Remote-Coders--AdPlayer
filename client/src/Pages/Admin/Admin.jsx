@@ -7,16 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import DatatableAdmin from "../../components/datatable/DatatableAdmin";
 
 const Admin = () => {
-<<<<<<< Updated upstream
-  return (
-    <div>
-      
-    </div>
-  )
-}
-=======
   const [isSidebarVisible, setSidebarVisible] = useState(true);
->>>>>>> Stashed changes
 
   const handleSidebarToggle = () => {
     setSidebarVisible(!isSidebarVisible);
