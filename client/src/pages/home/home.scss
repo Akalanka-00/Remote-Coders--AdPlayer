@@ -1,0 +1,58 @@
+.home {
+  display: flex;
+
+  .toggleSidebar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1;
+
+    .sandwitch {
+      margin-top: -1cqmin;
+    }
+  }
+
+  .homeContainer {
+    flex: 6;
+    transition: transform 0.6s ease; /* Transition property for smooth animation */
+    transform: translateX(0); /* Start with no translation */
+
+    &.collapsed {
+      transform: translateX(0px); /* Adjust the value as per your sidebar width */
+    }
+
+    .widgets,
+    .charts {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .charts {
+      padding: 5px 20px;
+    }
+
+    .listContainer {
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+      padding: 20px;
+      margin: 20px;
+
+      .listTitle {
+        font-weight: 500;
+        color: gray;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .toggleNavbar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1;
+
+  }
+}
