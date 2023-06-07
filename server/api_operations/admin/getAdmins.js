@@ -6,8 +6,8 @@ async function getAdminData() {
     const data = doc.data();
     return {
       id: doc.id,
-      fname: data.Fname,
-      lname: data.Lname,
+      fname: data.fname,
+      lname: data.lname,
       email: data.email,
       privilage1: data.privilage1,
       privilage2: data.privilage2,
