@@ -29,7 +29,7 @@ import {
           mx='auto'
           spacing={4}
         >
-          <Navlink to='/' name='Voasiz' size='lg' />
+          <Navlink to='/' name='AdPlayer' size='lg' />
           <Spacer />
           {!currentUser && <Navlink to='/login' name='Login' />}
           {!currentUser && <Navlink to='/register' name='Register' />}
