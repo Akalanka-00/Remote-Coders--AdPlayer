@@ -1,45 +1,25 @@
-
-import React, {Component} from 'react'
-import CusForm from './CustomerPages/form/Custform';
-import { Routes,Route,NavLink,BrowserRouter } from 'react-router-dom';
-import Dashboard from './CustomerPages/dashboard/dashboard.js';
-import Profile from './CustomerPages/profile/profile';
-import Editprofile from './CustomerPages/profile/editprofile';
-import GameDetail from './CustomerPages/gamedetails/gamedetail';
-
-import ViewAd from './CustomerPages/adcollection/viewAd';
-import Form from './CustomerPages/form/form';
-import ButtonAppBar from './CustomerPages/navbar/navbar';
-import Tables from './CustomerPages/table/table';
-import DragDropFiles from './CustomerPages/form/dragdrop';
-class App extends Component {
-  render(){
+import { BrowserRouter, Route,Routes} from "react-router-dom";
+import Home from "./custPages/homePage/Home";
+import ProfilePage from "./custPages/profilePage/ProfilePage";
+import AdViewPage from "./custPages/adViewPage/AdViewPage";
+import GameViewPage from "./custPages/gameViewPage/GameViewPage";
+import EditProfile from "./custPages/editProfile/EditProfile";
+import PublishAd from "./custPages/PublishAd/publishAd";
+function App() {
   return (
-    
-   
-      <BrowserRouter>
-      <header>
-       
-      </header>
-      <main>
-        <Routes>
-          <Route path="/CusForm" index element={<CusForm/>}/>
-          <Route path="/Dashboard" index element={<Dashboard/>}/>
-          <Route path="/Profile" index element={<Profile/>}/>
-          <Route path="/Editprofile" index element={<Editprofile/>}/>
-          <Route path="/GameDetail" index element={<GameDetail/>}/>
-        
-          <Route path="/ViewAd" index element={<ViewAd/>}/>
-          <Route path="/Form" index element={<Form/>}/>
-          <Route path="/Tables" index element={<Tables/>}/>
-          <Route path="/DragDropFiles" index element={<DragDropFiles/>}/>
-        </Routes>
-        <ButtonAppBar></ButtonAppBar>
-       
-      </main>
-    </BrowserRouter>
+    <div className="App">
+ <BrowserRouter>
+ <Routes>
+  <Route path="/home" element={<Home/>}></Route>
+  <Route path="/profilePage" element={<ProfilePage/>}></Route>
+  <Route path="/adViewPage" element={<AdViewPage/>}></Route>
+  <Route path="/gameViewPage" element={<GameViewPage/>}></Route>
+  <Route path="/EditProfile" element={<EditProfile/>}></Route>
+  <Route path="/publishAd" element={<PublishAd/>}></Route>
+ </Routes>
+ </BrowserRouter>
+    </div>
   );
-}
 }
 
 export default App;
