@@ -50,8 +50,8 @@ const Table = () => {
         className="datagrid"
         rows={subadmin.map((admin) => ({
           id: admin.id,
-          firstName: admin.Fname,
-          lastName: admin.Lname,
+          firstName: admin.fname,
+          lastName: admin.lname,
           email: admin.email,
           privilage1: admin.privilage1,
           privilage2: admin.privilage2,

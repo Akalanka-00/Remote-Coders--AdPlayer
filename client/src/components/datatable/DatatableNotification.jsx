@@ -81,11 +81,11 @@ const DatatableNotification = () => {
         className="datagrid"
         rows={ComplainCollection.map((comp) => ({
           id: comp.id,
-          User_Id: comp.User_Id,
-          Title: comp.Title,
-          Complained_Date: comp.Complained_Date,
-          Description: comp.Description,
-          Status: comp.Status,
+          User_Id: comp.sender_id,
+          Title: comp.title,
+          Complained_Date: comp.complained_Date,
+          Description: comp.description,
+          Status: comp.status,
         }))}
         columns={columns.concat(actionColumn)}
         pageSize={9}

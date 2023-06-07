@@ -19,8 +19,9 @@ const columns = [
   { field: "firstName", headerName: "First name", width: 130 },
   { field: "lastName", headerName: "Last name", width: 130 },
   { field: "Action", headerName: "Action", width: 230 },
-  { field: "Date", headerName: "Date", width: 130 },
-  { field: "Time", headerName: "Time", width: 130 },
+  { field: "Date", headerName: "Date", width: 130,    valueFormatter: (params) =>
+  new Date(params.value?.seconds * 1000).toLocaleDateString(),},
+
   
 
 ];
@@ -28,7 +29,7 @@ const columns = [
 const DatatableProfile = () => {
   const [data, setData] = useState([]);
   const [LogData, setLogs] = useState([]);
-  const logRef = collection(db, "LogData");
+  const logRef = collection(db, "LogCollection");
 
 
   useEffect(() => {
@@ -80,15 +81,13 @@ const DatatableProfile = () => {
           id: logs.id,
           firstName: logs.Admin_Fname,
           lastName: logs.Admin_lname,
-          Action: logs.Action,
-          Date: logs.Date,
-          Time: logs.Time,
+          Action: logs.action,
+          Date: logs.date_and_time,
 
         }))}
         columns={columns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );
