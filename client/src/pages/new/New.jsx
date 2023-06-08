@@ -17,8 +17,8 @@ const New = ({ inputs, title }) => {
   const [subadmin, setAdmins] = useState([]);
 
   const [formData, setForm] = useState({
-    Fname: "",
-    Lname: "",
+    fname: "",
+    lname: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -58,7 +58,7 @@ const New = ({ inputs, title }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.Fname || !formData.Lname || !formData.password) {
+    if (!formData.fname || !formData.lname || !formData.password) {
       alert("Please fill out all fields");
       return;
     }
@@ -66,8 +66,8 @@ const New = ({ inputs, title }) => {
     addDoc(setAdminsRef, formData);
 
     setForm({
-      Fname: "",
-      Lname: "",
+      fname: "",
+      lname: "",
       password: "",
       confirmPassword: "",
       email: "",
@@ -83,7 +83,7 @@ const New = ({ inputs, title }) => {
   // const handleSubmit = (e) => {
   //   e.preventDefault();
 
-  //   if (!formData.Fname || !formData.Lname || !formData.password) {
+  //   if (!formData.fname || !formData.lname || !formData.password) {
   //     alert("Please fill out all fields");
   //     return;
   //   } else if (formData.confirmPassword !== formData.password) {
@@ -165,29 +165,29 @@ const New = ({ inputs, title }) => {
                   <h1>Admin Details</h1>
                 </label>
                 <div>
-                  <label htmlFor="Fname">First Name</label>
+                  <label htmlFor="fname">First Name</label>
                   <input
                     type="text"
-                    id="Fname"
-                    value={formData.Fname}
+                    id="fname"
+                    value={formData.fname}
                     onChange={(e) =>
                       setForm((prevForm) => ({
                         ...prevForm,
-                        Fname: e.target.value,
+                        fname: e.target.value,
                       }))
                     }
                   />
                 </div>
                 <div>
-                  <label htmlFor="Lname">Last Name</label>
+                  <label htmlFor="lname">Last Name</label>
                   <input
                     type="text"
-                    id="Lname"
-                    value={formData.Lname}
+                    id="lname"
+                    value={formData.lname}
                     onChange={(e) =>
                       setForm((prevForm) => ({
                         ...prevForm,
-                        Lname: e.target.value,
+                        lname: e.target.value,
                       }))
                     }
                   />

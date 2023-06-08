@@ -1,62 +1,56 @@
 import "./chart.scss";
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import { useState, useEffect } from "react";
 import { db } from "../../firebase.config";
 import {
   collection,
   onSnapshot,
-  doc,
-  addDoc,
-  deleteDoc,
-  query,
-  orderBy,
-  where,
 } from "firebase/firestore";
 import {
   AreaChart,
   Area,
   XAxis,
+  YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  { name: "January", Total: 100 },
-  { name: "February", Total: 2000 },
-  { name: "March", Total: 80 },
-  { name: "April", Total: 3600 },
-  { name: "May", Total: 500 },
-  { name: "June", Total: 700 },
-];
-
 const Chart = ({ aspect, title }) => {
-
   const [data, setData] = useState([]);
-  const [LogData, setLogs] = useState([]);
   const logRef = collection(db, "LogCollection");
 
   useEffect(() => {
-    onSnapshot(logRef, (snapshot) => {
-      setLogs(
-        snapshot.docs.map((doc) => {
-          return {
-            id: doc.id,
-            viewng: false,
-            ...doc.data(),
-          };
-        })
-      );
-    });
-  });
+    const unsubscribe = onSnapshot(logRef, (snapshot) => {
+      const groupedData = {};
 
+      snapshot.docs.forEach((doc) => {
+        const log = doc.data();
+        const date = new Date(log.date_and_time?.seconds * 1000).toLocaleDateString();
+
+        if (groupedData[date]) {
+          groupedData[date].Total += 1;
+        } else {
+          groupedData[date] = {
+            name: date,
+            Total: 1,
+          };
+        }
+      });
+
+      setData(Object.values(groupedData));
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
-    
     <div className="chart">
       <div className="top">
-      <div className="title">{title}</div>
-      <TrendingUpIcon  fontSize="small" />
+        <div className="title">{title}</div>
+        <TrendingUpIcon fontSize="small" />
       </div>
       <ResponsiveContainer width="100%" aspect={aspect}>
         <AreaChart
@@ -72,6 +66,7 @@ const Chart = ({ aspect, title }) => {
             </linearGradient>
           </defs>
           <XAxis dataKey="name" stroke="gray" />
+          <YAxis />
           <CartesianGrid strokeDasharray="3 3" className="chartGrid" />
           <Tooltip />
           <Area
