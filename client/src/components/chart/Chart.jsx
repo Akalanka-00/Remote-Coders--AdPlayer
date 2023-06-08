@@ -1,5 +1,17 @@
 import "./chart.scss";
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import { useState, useEffect } from "react";
+import { db } from "../../firebase.config";
+import {
+  collection,
+  onSnapshot,
+  doc,
+  addDoc,
+  deleteDoc,
+  query,
+  orderBy,
+  where,
+} from "firebase/firestore";
 import {
   AreaChart,
   Area,
@@ -19,7 +31,28 @@ const data = [
 ];
 
 const Chart = ({ aspect, title }) => {
+
+  const [data, setData] = useState([]);
+  const [LogData, setLogs] = useState([]);
+  const logRef = collection(db, "LogCollection");
+
+  useEffect(() => {
+    onSnapshot(logRef, (snapshot) => {
+      setLogs(
+        snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            viewng: false,
+            ...doc.data(),
+          };
+        })
+      );
+    });
+  });
+
+
   return (
+    
     <div className="chart">
       <div className="top">
       <div className="title">{title}</div>

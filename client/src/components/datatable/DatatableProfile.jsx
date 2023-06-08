@@ -15,9 +15,9 @@ import {
 } from "firebase/firestore";
 
 const columns = [
-  { field: "id", headerName: "ID", width: 100 },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
+  { field: "id", headerName: "ID", width: 250 },
+  // { field: "firstName", headerName: "First name", width: 130 },
+  // { field: "lastName", headerName: "Last name", width: 130 },
   { field: "Action", headerName: "Action", width: 230 },
   { field: "Date", headerName: "Date", width: 130,    valueFormatter: (params) =>
   new Date(params.value?.seconds * 1000).toLocaleDateString(),},
@@ -79,8 +79,8 @@ const DatatableProfile = () => {
         className="datagrid"
         rows={LogData.map((logs) => ({
           id: logs.id,
-          firstName: logs.Admin_Fname,
-          lastName: logs.Admin_lname,
+          // firstName: logs.Admin_Fname,
+          // lastName: logs.Admin_lname,
           Action: logs.action,
           Date: logs.date_and_time,
 
