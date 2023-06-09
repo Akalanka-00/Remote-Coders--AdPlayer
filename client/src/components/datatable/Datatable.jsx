@@ -10,8 +10,8 @@ import {
 } from "firebase/firestore";
 
 const columns = [
-  { field: "id", headerName: "ID", width: 100 },
-  { field: "name", headerName: "Ad Name", width: 130 },
+  { field: "id", headerName: "ID", width: 270 },
+  { field: "name", headerName: "Ad Name", width: 160 },
   { field: "published_date", headerName: "Published Date", width: 250, valueFormatter: (params) => new Date(params.value?.seconds * 1000).toLocaleDateString() },
   { field: "status", headerName: "Status", width: 130 },
 ];

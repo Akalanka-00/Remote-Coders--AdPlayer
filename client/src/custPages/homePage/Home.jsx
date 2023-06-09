@@ -12,9 +12,9 @@ const Home=()=>{
       <div className="homeContainer">
       <Navbar/>
       <div className="widget">
-<Widgets type="advertisemnet"/>
-<Widgets type="game"/>
-<Widgets type="summary"/>
+      <Widgets title="Top Ads" widgettype="adcollection" />
+      <Widgets title="Top Games" link="More Info" widgettype="gamecollection" />
+      <Widgets title="Summary of Ads" link="More Info" />
 <Widgets/>
       </div>
       <div className="charts">

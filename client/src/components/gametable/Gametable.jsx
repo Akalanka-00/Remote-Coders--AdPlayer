@@ -11,8 +11,8 @@ import {
 
 const columns = [
   //{ field: "id", headerName: "ID", width: 100 },
-  { field: "game_name", headerName: "Game Name", width: 130 },
-  { field: "rank", headerName: "Rank", width: 250},
+  { field: "game_name", headerName: "Game Name", width: 270 },
+  { field: "rank", headerName: "Rank", width: 150},
   { field: "platform", headerName: "Platform", width: 130 },
   //{ field: "status", headerName: "Status", width: 130 },
 ];
@@ -64,7 +64,7 @@ const DatatableAds = ({ id }) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Your Ads
+        All Games
       </div>
       <DataGrid
         className="datagrid"

@@ -8,7 +8,7 @@ import { Card, CardContent, Grid, Select,FormControlLabel,Checkbox,MenuItem ,For
 import { collection, onSnapshot, addDoc,orderBy,query, limit} from "firebase/firestore"
 import { NavLink } from "react-router-dom"
 import {Multiselect} from 'multiselect-react-dropdown'
-import ImageUploader from "../../components/ImageUpload/image";
+import ADImageUploader from "../../components/ImageUpload/adimage";
 import { storage } from "../../firebase";
 import { getDownloadURL } from "firebase/storage";
 const PublishAd=()=>{
@@ -16,7 +16,7 @@ const PublishAd=()=>{
     const [receipes,setreceipes]=useState([]) //because the receipes are in an array
     const [gameDetails, setGames] = useState([])
     const gamesRef = collection(db, "GameCollection");
-    const data=[
+    const selectedCountries=[
       { Country: 'Afghanistan', id: 1 },
       { Country: 'Aland Islands', id: 2 },
       { Country: 'Albania', id: 3 },
@@ -267,7 +267,7 @@ const PublishAd=()=>{
       { Country: 'Zambia', id: 248 },
       { Country: 'Zimbabwe', id: 249 }
   ]
-    const [options]=useState(data);
+    const [options]=useState(selectedCountries);
     const [form,setForm]=useState({     //display
      Adname:"",   
      Adtype:"",
@@ -278,17 +278,12 @@ const PublishAd=()=>{
      country:[],
      Status:"pending",
      AdViewCount:"0",
-     imageURL: ""
+     imageUrl: ""
   })
   const receipesCollectionRef=collection(db,"AdvertisementCollection")
   const [selectedImageURL, setSelectedImageURL] = useState(null);
-  const handleImageUpload = async (imagePath) => {
-    try {
-      const imageURL = await getDownloadURL(storage, imagePath);
-      setForm({ ...form, imageURL });
-    } catch (error) {
-      console.error("Error getting image URL:", error);
-    }
+  const handleImageUpload = (url) => {
+    setForm((prevForm) => ({ ...prevForm, imageUrl: url }));
   };
 
   const handleImageSelect = (url) => {
@@ -343,7 +338,7 @@ const PublishAd=()=>{
     region:"",
     Status:"pending",
     AdViewCount:"0",
-    imageURL: ""
+    imageUrl: ""
   })
   
   alert("Data sent succecfully")
@@ -477,9 +472,17 @@ const PublishAd=()=>{
       <FormControl>
       <div>
         <h5 style={{padding:"10px",marginTop:"10px"}}>Select Countries</h5>
-        <Multiselect style={{width: '300px', textAlign: 'left', marginTop: '25px'}}options={options} displayValue="Country" value={form.country}
-        onChange={(e) => setForm({ ...form, country: e.target.value })}
-        variant="standard" />
+<Multiselect
+  style={{ width: '300px', textAlign: 'left', marginTop: '25px' }}
+  options={options}
+  displayValue="Country"
+  value={form.country}
+  onSelect={(selectedList, selectedItem) => setForm({ ...form, country: selectedList })}
+  onRemove={(selectedList, removedItem) => setForm({ ...form, country: selectedList })}
+  variant="standard"
+/>
+
+
     </div>
       </FormControl>
      
@@ -487,7 +490,7 @@ const PublishAd=()=>{
 <div>  
       {selectedImageURL && <img src={selectedImageURL} alt="Selected" />}
       <Grid>
-      <ImageUploader onImageSelect={handleImageSelect} onImageUpload={handleImageUpload} />
+      <ADImageUploader onImageSelect={handleImageSelect} onImageUpload={handleImageUpload} />
       </Grid>
 </div>
   

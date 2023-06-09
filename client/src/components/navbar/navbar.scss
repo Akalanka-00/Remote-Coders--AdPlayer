@@ -8,9 +8,9 @@ color: #555;
 .wrapper{
     width: 100%;
     padding: 20px;
-   display: flex;
-   align-items: center; 
-   justify-content: space-between;
+    display: flex;
+    align-items:center; 
+    justify-content: space-between;
 
    .search{
     display: flex;
@@ -31,6 +31,7 @@ color: #555;
    .items{
     display: flex;
     align-items: center;
+    
     .item{
         display: flex;
         align-items: center;

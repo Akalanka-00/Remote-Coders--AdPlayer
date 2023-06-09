@@ -7,9 +7,8 @@ const Navbar=()=>{
  return(
     <div className="navbar">
       <div className="wrapper">
-        <div className="serch">
-            <input type="text" placeholder="Search.."/>
-            <SearchOutlined/>
+        <div>
+         
         </div>
       <div className="items">
       <Link to="/ProfilePage" style={{textDecoration:"none"}}>
